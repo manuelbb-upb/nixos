@@ -43,6 +43,7 @@
   # environment.
   home.packages = with pkgs; [
     wev           # debug Wayland events
+    jq            # parse JSON in terminal
     killall      
     htop 
     hwinfo
