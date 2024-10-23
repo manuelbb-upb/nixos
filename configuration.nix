@@ -235,6 +235,8 @@
       syntax on
       '';
     })
+    pciutils    # lspci etc
+    usbutils    # lsusb
     wl-clipboard
     wget
     curl
