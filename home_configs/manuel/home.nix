@@ -148,7 +148,7 @@
     enable = true;
     juliaVersions = [
       {
-        version="1.10.4";
+        version="1.11.1";
         default=true;
       }
     ];

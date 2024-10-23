@@ -2,7 +2,7 @@
   description = "NixOS configuration";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
 
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -43,16 +43,21 @@
     
     nur.url = github:nix-community/NUR;
 
-    catppuccin.url = "github:catppuccin/nix";
+    catppuccin.url = "github:catppuccin/nix/207a8449ab95c0aff9ac893859f7d4b822be6f61";
 
     #split-monitor-workspaces = {
     #  url = "github:Duckonaut/split-monitor-workspaces";
     #  inputs.hyprland.follows = "hyprland"; # <- make sure this line is present for the plugin to work as intended
     #};
 
-    stylix.url = "github:danth/stylix";
+    stylix = {
+      url = "github:danth/stylix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
-    scientific-fhs.url = "github:manuelbb-upb/scientific-fhs";
+    scientific-fhs = {
+      url = "github:manuelbb-upb/scientific-fhs/flake_module";
+    };
   };
 
   outputs = inputs@{ 
