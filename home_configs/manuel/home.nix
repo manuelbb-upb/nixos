@@ -48,6 +48,7 @@
     htop 
     hwinfo
     fastfetch      # print system information in terminal
+    filelight       # KDE tool for storage analysis
     nnn             # terminal file explorer
     bitwarden       # password manager
     bitwarden-cli   # password manager command line tool
@@ -189,4 +190,6 @@
     enableZshIntegration = true;
     nix-direnv.enable = true;
   };
+
+  home.file.".duplicacy/preferences".source = ./duplicacy_preferences.txt;
 }

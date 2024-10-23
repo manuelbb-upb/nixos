@@ -1,0 +1,16 @@
+[
+    {
+        "name": "default",
+        "id": "manuelT14G1",
+        "repository": "",
+        "storage": "webdav://manuel.berkemeier@tu-dortmund.de@tu-dortmund.sciebo.de:443/remote.php/webdav",
+        "encrypted": false,
+        "no_backup": false,
+        "no_restore": false,
+        "no_save_password": false,
+        "nobackup_file": "",
+        "keys": null,
+        "filters": "",
+        "exclude_by_attribute": false
+    }
+]

@@ -208,6 +208,8 @@ in
         }
       ];
       userSettings = {
+        # don't notify about updates (?)
+        "update.mode" = "none";
         # Make dev containers use `podman` instead of `docker`
         "dev.containers.dockerPath" = "podman";
         "dev.containers.dockerSocketPath" = "/var/run/podman/podman.sock";

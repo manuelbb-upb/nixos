@@ -56,7 +56,20 @@
       "flakes" 
     ];
   };
-  
+
+  # add community templates:
+  nix.registry.communityTemplates.to = {
+    owner = "nix-community";
+    repo = "templates";
+    type = "github";
+  };
+
+  # make tmp file lifespan shorter
+  environment.etc."tmpfiles.d/tmp.conf".text = ''
+    q /tmp 1777 root root 3d
+    q /var/tmp 1777 root root 6d
+  '';
+      
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";

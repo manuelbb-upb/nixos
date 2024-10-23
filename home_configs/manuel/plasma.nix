@@ -1,5 +1,7 @@
 {pkgs, ...}:
 {
+  # set bookmarks 
+  home.file.".local/share/user-places.xbel".source = ./plasma_dolphin_user_places.xbel;
   programs.plasma = {
     enable = true;
     kwin = {
