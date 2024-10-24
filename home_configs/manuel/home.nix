@@ -156,6 +156,7 @@
     enableNVIDIA = false;
     enableGraphical = true;
   };
+  home.sessionVariables.GLOBAL_JULIA_PATH = "/etc/profiles/per-user/manuel/bin/julia";# TODO determine dynamically?
   # Enable and configure git
   programs.git = {
     enable = true;

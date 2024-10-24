@@ -1,6 +1,10 @@
 { pkgs, inputs, ... } :
 let
-  nixExtensions = with pkgs.vscode-extensions; [
+  marketplaceExtensionsInput = inputs.nix-vscode-extensions.extensions.${pkgs.system};
+  marketplaceExtensions = marketplaceExtensionsInput.vscode-marketplace;
+  marketplaceExtensionsRelease = marketplaceExtensionsInput.vscode-marketplace-release;
+
+  nixpkgsExtensionList = with pkgs.vscode-extensions; [
 #     sumneko.lua
 #     # useful extensions for Python:
 #     # (ms-python.python.overrideAttrs (final: prev: { python3 = pkgs.python39; }))
@@ -14,7 +18,7 @@ let
     james-yu.latex-workshop
     valentjn.vscode-ltex
   ];
-  moreExtensions = with inputs.nix-vscode-extensions.extensions.${pkgs.system}.vscode-marketplace; [
+  marketplaceExtensionList = with marketplaceExtensions; [
     # Spacemacs and Vim-Mode
     vspacecode.whichkey
     vspacecode.vspacecode
@@ -23,51 +27,26 @@ let
     thmsrynr.vscode-namegen
     # Catppuccin Theme
     catppuccin.catppuccin-vsc
-    # Julia language extension
-    julialang.language-julia
     # Nix language extension
     jnoortheen.nix-ide
     # direnv chooser:
     mkhl.direnv
     # Devcontainers
     ms-vscode-remote.remote-containers
-#     # Fortran
-#     fortran-lang.linter-gfortran
-#     goessner.mdmath
-#     oijaz.unicode-latex
   ];
-  marketPlaceExtensions = pkgs.vscode-utils.extensionsFromVscodeMarketplace [
-   #  {
-   #    name = "quarto";
-   #    publisher = "quarto";
-   #    version = "1.113.0";
-   #    hash = "sha256-PJnzfajjLWtrR4vSLugnq9Ke/84vi21au2wb+3bdpag=";
-   #  }
+  marketplaceExtensionListRelease = with marketplaceExtensionsRelease; [
+  ];
+
+  fetchedExtensionList = pkgs.vscode-utils.extensionsFromVscodeMarketplace [
+    {
+      name = "language-julia";
+      publisher = "julialang";
+      version = "1.124.2";
+      hash = "sha256-ZwZbR8EQdBlBZlGWeZ8uMSWJFCi8J6SmUCyGMK6Wluw=";
+    }
   ];
 in
   {
-    # home.file.".vscode/argv.json".text = ''
-    #   // This configuration file allows you to pass permanent command line arguments to VS Code.
-    #   // Only a subset of arguments is currently supported to reduce the likelihood of breaking
-    #   // the installation.
-    #   //
-    #   // PLEASE DO NOT CHANGE WITHOUT UNDERSTANDING THE IMPACT
-    #   //
-    #   // NOTE: Changing this file requires a restart of VS Code.
-    #   {
-    #           // Use software rendering instead of hardware accelerated rendering.
-    #           // This can help in cases where you see rendering issues in VS Code.
-    #           "disable-hardware-acceleration": true,
-
-    #           // Allows to disable crash reporting.
-    #           // Should restart the app if the value is changed.
-    #           "enable-crash-reporter": true,
-
-    #           // Unique id used for correlating crash reports sent from this instance.
-    #           // Do not edit this value.
-    #           "crash-reporter-id": "6032f65e-ee1c-4fe9-9d9a-eb504cee4fdc"
-    #   }
-    # '';
     home.packages = [
       pkgs.ltex-ls
     ];
@@ -75,7 +54,7 @@ in
       enable = true;
       # manage all extenions with home-manager only:
       mutableExtensionsDir = true;
-      extensions = nixExtensions ++ moreExtensions ++ marketPlaceExtensions;
+      extensions = nixpkgsExtensionList ++ marketplaceExtensionList ++ marketplaceExtensionListRelease ++ fetchedExtensionList;
 
       keybindings = [
         {
