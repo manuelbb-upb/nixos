@@ -221,6 +221,17 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
+    htop
+    killall
+    hwinfo
+    pciutils    # lspci etc
+    usbutils    # lsusb
+    wl-clipboard
+    wget
+    curl
+    git
+    podman-tui  # status of containers in the terminal
+    podman-compose
     ((vim_configurable.override {}).customize {
       name = "vim";
       vimrcConfig.packages.myplugins = with pkgs.vimPlugins; {
@@ -236,15 +247,6 @@
       syntax on
       '';
     })
-    pciutils    # lspci etc
-    usbutils    # lsusb
-    wl-clipboard
-    wget
-    curl
-    git
-    podman-tui  # status of containers in the terminal
-    podman-compose
-    amdgpu_top
   ];
 
   virtualisation.containers.enable = true;
