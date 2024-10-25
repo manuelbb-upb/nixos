@@ -81,6 +81,7 @@
 
   fonts.packages = with pkgs; [
     julia-mono
+    lmodern
     nerdfonts
     corefonts
   ];
