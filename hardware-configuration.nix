@@ -40,11 +40,15 @@
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
-  
+
+  # Make Trackpad slower
   environment.etc."libinput/local-overrides.quirks".text = ''
   [Lenovo T14 G1 Trackpoint]
   MatchName=*TPPS/2 ALPS TrackPoint
   MatchDMIModalias=dmi:*svnLENOVO:*:pvrThinkPadT14Gen1:*
   AttrTrackpointMultiplier=0.4
   '';
+  environment.systemPackages = [
+    pkgs.amdgpu_top
+  ];
 }
