@@ -44,21 +44,18 @@
   home.packages = with pkgs; [
     wev           # debug Wayland events
     jq            # parse JSON in terminal
-    killall      
-    htop 
-    hwinfo
     fastfetch      # print system information in terminal
     filelight       # KDE tool for storage analysis
     nnn             # terminal file explorer
     bitwarden       # password manager
     bitwarden-cli   # password manager command line tool
     duplicacy
-    chezmoi
     protonvpn-gui
     networkmanager-openconnect  # work VPN
     openconnect                 # work VPN
     google-chrome
-    #julia
+    zotero
+    #julia        # I use scientific-fhs for global Julia
     texliveFull
     (pkgs.callPackage ./segoe_ui.nix {})  # additional Microsoft font
     libreoffice-qt
