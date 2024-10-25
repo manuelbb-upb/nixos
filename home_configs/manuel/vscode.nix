@@ -203,10 +203,10 @@ in
         "terminal.integrated.commandsToSkipShell" = [
           "language-julia.interrupt"
         ];
-        # julia.cellDelimiters = [
-        #   "^#(\\s?)%%"
-        #   "^#-"
-        # ];
+        julia.cellDelimiters = [
+          "^#(\\s?)%%"
+          "^#-"
+        ];
         # "julia.executablePath" = "julia";
         "julia.symbolCacheDownload" = true;
         "julia.enableTelemetry" = false;
