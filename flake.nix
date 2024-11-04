@@ -2,7 +2,7 @@
   description = "NixOS configuration";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -43,7 +43,7 @@
     
     nur.url = github:nix-community/NUR;
 
-    catppuccin.url = "github:catppuccin/nix/207a8449ab95c0aff9ac893859f7d4b822be6f61";
+    catppuccin.url = "github:catppuccin/nix";
 
     #split-monitor-workspaces = {
     #  url = "github:Duckonaut/split-monitor-workspaces";

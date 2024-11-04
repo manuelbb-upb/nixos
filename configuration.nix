@@ -79,6 +79,7 @@
   # Set your time zone.
   time.timeZone = "Europe/Berlin";
 
+  fonts.fontDir.enable = true;
   fonts.packages = with pkgs; [
     julia-mono
     lmodern
