@@ -168,6 +168,9 @@
   # Enable hardware acceleration
   hardware.graphics = {
     enable = true;
+    extraPackages = with pkgs; [
+      mesa
+    ];
   };
 
   # Enable Bluetooth
@@ -210,6 +213,15 @@
     ];
     shell = pkgs.zsh;
   };
+  programs.nix-ld = {
+    enable = true;
+    libraries = with pkgs; [
+      glib
+      stdenv.cc.cc
+      stdenv.cc.bintools
+      stdenv.cc.cc.lib
+    ];
+  };
 
   programs.zsh.enable = true;
 
@@ -225,8 +237,10 @@
     htop
     killall
     hwinfo
+    unzip
     pciutils    # lspci etc
     usbutils    # lsusb
+    toybox
     wl-clipboard
     wget
     curl
@@ -258,16 +272,17 @@
     };
   };
 
-  # hacks to make rocm available
-  systemd.tmpfiles.rules = [
-    "L+    /opt/rocm/hip   -    -    -     -    ${pkgs.rocmPackages.clr}"
-  ];
-  hardware.graphics.extraPackages = with pkgs; [
-    rocmPackages.clr.icd
-  ];
+#   # hacks to make rocm available
+#   systemd.tmpfiles.rules = [
+#     "L+    /opt/rocm/hip   -    -    -     -    ${pkgs.rocmPackages.clr}"
+#   ];
+#   hardware.graphics.extraPackages = with pkgs; [
+#     rocmPackages.clr.icd
+#   ];
+#   environment.variables.HSA_OVERRIDE_GFX_VERSION = "10.3.0";
+# 
   environment.variables = {
     EDITOR="vim";
-    HSA_OVERRIDE_GFX_VERSION = "10.3.0";
   };
 
 

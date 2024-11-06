@@ -127,6 +127,7 @@
   
   imports = [
     inputs.scientific-fhs.nixosModules.default
+    ./matlab.nix
     ./stylix.nix
     ./plasma.nix
     ./email_tud.nix

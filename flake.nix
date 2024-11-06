@@ -58,6 +58,11 @@
     scientific-fhs = {
       url = "github:manuelbb-upb/scientific-fhs/flake_module";
     };
+
+    nix-matlab = {
+      url = "gitlab:doronbehar/nix-matlab";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = inputs@{ 
@@ -74,6 +79,7 @@
     hyprsplit,
     stylix,
     scientific-fhs,
+    nix-matlab,
     ... 
   }: 
   let
