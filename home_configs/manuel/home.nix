@@ -62,6 +62,8 @@
     hunspell              # spellchecking for libreoffice
     hunspellDicts.en_US
     hunspellDicts.de_DE
+
+    inputs.nix-alien.packages.${system}.nix-alien
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
     # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
@@ -126,7 +128,8 @@
   fonts.fontconfig.enable = true;
   
   imports = [
-    inputs.scientific-fhs.nixosModules.default
+    #inputs.scientific-fhs.nixosModules.default
+    ./julia.nix
     ./matlab.nix
     ./stylix.nix
     ./plasma.nix
@@ -141,8 +144,10 @@
     ./waybar.nix
     ./hyprlock.nix
     ./hypridle.nix
+    ./kitty.nix
   ];
 
+  /*
   programs.scientific-fhs = {
     enable = true;
     juliaVersions = [
@@ -153,28 +158,15 @@
     ];
     enableNVIDIA = false;
     enableGraphical = true;
-  };
-  home.sessionVariables.GLOBAL_JULIA_PATH = "/etc/profiles/per-user/manuel/bin/julia";# TODO determine dynamically?
+    };
+  */
+  
   # Enable and configure git
   programs.git = {
     enable = true;
     userName = "manuelbb-upb";
     userEmail = "manuelbb@mail.uni-paderborn.de";
   };
-
-  programs.kitty = {
-    enable = true;
-    # font is managed by stylix now
-    # font = {
-    #   name = "ComicShannsMono Nerd Font";
-    #   package = pkgs.nerdfonts;
-    # };
-    shellIntegration = {
-      enableBashIntegration = true;
-      enableZshIntegration = true;
-    };
-  };
-
   # locate packages for missing executables
   programs.nix-index = {
     enable = true;

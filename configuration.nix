@@ -6,6 +6,7 @@
   , pkgs
   , inputs
   , lib
+  , options
   , ... 
 }:
 {
@@ -164,12 +165,19 @@
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
+  services.avahi = {
+    enable = true;
+    nssmdns4 = true;
+    openFirewall = true;
+  };
 
   # Enable hardware acceleration
   hardware.graphics = {
     enable = true;
+    enable32Bit = true;
     extraPackages = with pkgs; [
-      mesa
+      amdvlk
+      mesa.drivers
     ];
   };
 
@@ -213,15 +221,25 @@
     ];
     shell = pkgs.zsh;
   };
+
+  # Executing unpatched binaries:
   programs.nix-ld = {
     enable = true;
-    libraries = with pkgs; [
-      glib
-      stdenv.cc.cc
-      stdenv.cc.bintools
-      stdenv.cc.cc.lib
-    ];
+    libraries = options.programs.nix-ld.libraries.default ++ (
+      with pkgs; [
+        linux-pam   # installed anyways, required by Matlab
+        mesa        # installed anyways, required by Matlab
+      ]
+    );
+#     libraries = with pkgs; [
+#       glib
+#       stdenv.cc.cc
+#       stdenv.cc.bintools
+#       stdenv.cc.cc.lib
+#     ];
   };
+  # set `/bin` and `/usr/bin` for unpatched binaries:
+  services.envfs.enable = true;
 
   programs.zsh.enable = true;
 

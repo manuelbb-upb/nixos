@@ -40,6 +40,11 @@
       url = gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons;
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    nix-alien = {
+      url = "github:thiagokokada/nix-alien";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     
     nur.url = github:nix-community/NUR;
 
@@ -55,6 +60,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    /*
     scientific-fhs = {
       url = "github:manuelbb-upb/scientific-fhs/flake_module";
     };
@@ -63,6 +69,11 @@
       url = "gitlab:doronbehar/nix-matlab";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    */
+    nix-matlab-ld = {
+      url = "github:manuelbb-upb/nix-matlab-ld";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };  
   };
 
   outputs = inputs@{ 
@@ -78,8 +89,10 @@
     #split-monitor-workspaces, 
     hyprsplit,
     stylix,
-    scientific-fhs,
-    nix-matlab,
+    #scientific-fhs,
+    #nix-matlab,
+    nix-matlab-ld,
+    nix-alien,
     ... 
   }: 
   let

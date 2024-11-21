@@ -10,6 +10,7 @@
       vim-airline	    # bottom status bar
       vim-wayland-clipboard # copy to clipboard
       vim-lastplace         # open files at last position
+      #vim-fugitive
     ];
     extraConfig = ''
       filetype plugin indent on
@@ -21,4 +22,3 @@
     '';
   };
 }
-# end of file ...
