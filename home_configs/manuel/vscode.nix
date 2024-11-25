@@ -32,7 +32,7 @@ let
     # direnv chooser:
     mkhl.direnv
     # Devcontainers
-    ms-vscode-remote.remote-containers
+    # ms-vscode-remote.remote-containers
   ];
   marketplaceExtensionListRelease = with marketplaceExtensionsRelease; [
   ];

@@ -14,7 +14,7 @@
   programs.zsh = {
     enable = true;
     initExtra = ''
-     # any-nix-shell zsh --info-right | source /dev/stdin
+      # any-nix-shell zsh --info-right | source /dev/stdin
       source $HOME/.config/zsh-custom-funcs/dunst_pause
       source $HOME/.config/zsh-custom-funcs/vimcd
     '';

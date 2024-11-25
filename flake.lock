@@ -622,11 +622,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1732110065,
-        "narHash": "sha256-NLC3E9AePnTwsdNagyeNRN4hZyhKeVIu8be3ytuGavk=",
+        "lastModified": 1732298623,
+        "narHash": "sha256-f+9b4Qx/R3RgY2sTdOJKxgsJ2XlFFtvrbEKY258B004=",
         "owner": "manuelbb-upb",
         "repo": "nix-matlab-ld",
-        "rev": "3d231210599f564e7cd878acc2190bdc704090fd",
+        "rev": "21718e02cd37bf610e7932444ea73e4bab1c8e50",
         "type": "github"
       },
       "original": {

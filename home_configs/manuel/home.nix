@@ -46,7 +46,6 @@
     jq            # parse JSON in terminal
     fastfetch      # print system information in terminal
     filelight       # KDE tool for storage analysis
-    nnn             # terminal file explorer
     bitwarden       # password manager
     bitwarden-cli   # password manager command line tool
     duplicacy
@@ -128,7 +127,9 @@
   fonts.fontconfig.enable = true;
   
   imports = [
+    ./zsh.nix
     #inputs.scientific-fhs.nixosModules.default
+    ./nnn.nix
     ./julia.nix
     ./matlab.nix
     ./stylix.nix
@@ -139,7 +140,6 @@
     ./vscode.nix
     ./vim.nix
     #./nu.nix
-    ./zsh.nix
     ./hyprland.nix
     ./waybar.nix
     ./hyprlock.nix
