@@ -60,6 +60,35 @@
       map kitty_mod+0x67 change_font_size all +2.0
       # ctrl shift f(neo) o(key) -- zoom *o*ut
       map kitty_mod+0x66 change_font_size all -2.0
+
+      # Create a new "manage windows" mode (mw)
+      map --new-mode mw kitty_mod+0x2d
+
+      # Switch focus to the neighboring window in the indicated direction using arrow keys
+      map --mode mw 0x73 neighboring_window left
+      map --mode mw 0x74 neighboring_window right
+      map --mode mw 0x72 neighboring_window up
+      map --mode mw 0x6e neighboring_window down
+
+      # Move the active window in the indicated direction
+      map --mode mw shift+0x72 move_window up
+      map --mode mw shift+0x73 move_window left
+      map --mode mw shift+0x74 move_window right
+      map --mode mw shift+0x6e move_window down
+
+      # Resize the active window
+      # w / v = 0x076
+      # s / i = 0x069
+      # a / u = 0x075
+      # d / a = 0x061
+
+      map --mode mw 0x075 resize_window narrower
+      map --mode mw 0x061 resize_window wider
+      map --mode mw 0x076 resize_window taller
+      map --mode mw 0x069 resize_window shorter
+
+      # Exit the manage window mode
+      map --mode mw esc pop_keyboard_mode
     '';
   };
 }

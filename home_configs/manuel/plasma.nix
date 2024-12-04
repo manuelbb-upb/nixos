@@ -41,7 +41,8 @@
         "Switch to Desktop 4" = "Meta+Q";
       };
       "services/org.kde.krunner.desktop"."_launch" = "Meta+U";# ["Meta+U" "Alt+F2"];
-      "services/kitty.desktop"."_launch" = "Meta+W";  # "T" like in Terminal
+      "services/org.kde.konsole.desktop"."_launch" = "none";  # clash with kitty 
+      "services/kitty.desktop"."_launch" = "Meta+W";  # "Tlike in Terminal
     };
   };
 }

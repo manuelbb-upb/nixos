@@ -65,6 +65,12 @@
     type = "github";
   };
 
+  nix.registry.myTemplates.to = {
+    owner = "manuelbb-upb";
+    repo = "nix-templates";
+    type = "github";
+  };
+
   # make tmp file lifespan shorter
   environment.etc."tmpfiles.d/tmp.conf".text = ''
     q /tmp 1777 root root 3d
