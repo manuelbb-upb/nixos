@@ -52,6 +52,7 @@
     protonvpn-gui
     networkmanager-openconnect  # work VPN
     openconnect                 # work VPN
+    gimp
     google-chrome
     zotero
     #julia        # I use scientific-fhs for global Julia

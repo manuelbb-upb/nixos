@@ -264,11 +264,14 @@
     unzip
     pciutils    # lspci etc
     usbutils    # lsusb
-    toybox
+    lsof        # `lsof +f -- /dev/sdX`
+    toybox      # implementation of many basic tools (`dd` etc.)
     wl-clipboard
     wget
     curl
     git
+    veracrypt
+    gparted
     podman-tui  # status of containers in the terminal
     podman-compose
     ((vim_configurable.override {}).customize {
