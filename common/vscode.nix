@@ -5,16 +5,11 @@ let
   marketplaceExtensionsRelease = marketplaceExtensionsInput.vscode-marketplace-release;
 
   nixpkgsExtensionList = with pkgs.vscode-extensions; [
-#     sumneko.lua
 #     # useful extensions for Python:
 #     # (ms-python.python.overrideAttrs (final: prev: { python3 = pkgs.python39; }))
 #     # (ms-python.python.override { python3 = (pkgs.python3.withPackages my-python-packages); })
 #     ms-python.python
-#     ms-toolsai.jupyter
-#     ms-toolsai.jupyter-renderers
-#     ms-toolsai.jupyter-keymap
-#     ms-toolsai.vscode-jupyter-cell-tags
-    # LaTeX
+   # LaTeX
     james-yu.latex-workshop
     valentjn.vscode-ltex
   ];
@@ -31,6 +26,12 @@ let
     jnoortheen.nix-ide
     # direnv chooser:
     mkhl.direnv
+    # Jupyter
+    # ms-python.python
+    ms-toolsai.jupyter
+    ms-toolsai.jupyter-renderers
+    ms-toolsai.jupyter-keymap
+    ms-toolsai.vscode-jupyter-cell-tags
     # Devcontainers
     # ms-vscode-remote.remote-containers
   ];
