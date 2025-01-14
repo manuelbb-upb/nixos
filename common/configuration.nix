@@ -40,6 +40,11 @@
   stylix.image = ../wallpapers/Wassily_Kandinsky_Composition_VIII.jpg;
   stylix.targets.grub.enable = true;
 
+  stylix.homeManagerIntegration = {
+    autoImport = true;    # make hm module available for any user
+    followSystem = true;  # instead of defaults, follow system settings
+  };
+
   # Make flake registry entry `nixpkgs` (used by `nix` commands)
   # match the `nixpkgs` used by “old” commands relying on `NIX_PATH`, see
   # https://nixos-and-flakes.thiscute.world/best-practices/nix-path-and-flake-registry

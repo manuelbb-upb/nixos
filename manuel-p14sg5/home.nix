@@ -9,4 +9,6 @@
     ./hyprlock.nix
     ./hypridle.nix
   ];
+
+  stylix.image = ../wallpapers/jisca-lucia-PM9OTjUk-iY-unsplash.jpg;
 }
