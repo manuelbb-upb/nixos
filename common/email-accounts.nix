@@ -1,19 +1,10 @@
 {pkgs, ...}:
 {
-  programs.thunderbird = {
-    enable = true;
-    profiles = {
-      work = {
-        isDefault = true;
-      };
-    };
-  };
   accounts.email = {
     accounts.tud = {
       address = "manuel.berkemeier@tu-dortmund.de";
       userName = "mmanberk";
       realName = "Manuel Berkemeier";
-      primary = true;
       signature.text = ''
         Manuel Berkemeier
         (er – ihm – sein  / he – him – his)
@@ -39,12 +30,29 @@
         tls.enable = true;
         tls.useStartTls = true;
       };
-
       thunderbird = {
         enable = true;
-        profiles = [
-          "work"
-        ];
+        profiles = [ "work" ];
+      };
+    };
+    accounts.hotmail = {
+      address = "manuel-berkemeier@hotmail.de";
+      userName = "manuel-berkemeier@hotmail.de";
+      realName = "M. Berkemeier";
+      imap = {
+        host = "outlook.office365.com";
+        port = 993;
+        tls.enable = true;
+      };
+      smtp = {
+        host = "outlook.office365.com";
+        port = 587;
+        tls.enable = true;
+        tls.useStartTls = true;
+      };
+      thunderbird = {
+        enable = true;
+        profiles = [ "private" ];
       };
     };
   };

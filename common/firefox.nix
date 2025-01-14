@@ -7,6 +7,9 @@ in
   home.packages = [
     pkgs.vdhcoapp
   ];
+  stylix.targets.firefox.enable = true;
+  stylix.targets.firefox.firefoxGnomeTheme.enable = true;
+
   programs.firefox = {
     enable = true;
     profiles = {
