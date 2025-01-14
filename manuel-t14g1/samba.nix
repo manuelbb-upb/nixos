@@ -18,6 +18,10 @@
         "hosts deny" = "0.0.0.0/0";
         "guest account" = "nobody";
         "map to guest" = "bad user";
+        "socket options" = "TCP_NODELAY IPTOS_LOWDELAY SO_RCVBUF=2048000 SO_SNDBUF=2048000";
+        "use sendfile" = "yes";
+        "min receivefile size" = "16384";
+        "getwd cache" = "true";
       };
       "private" = {
         "path" = "/home/manuel";
