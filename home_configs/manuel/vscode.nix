@@ -33,6 +33,12 @@ let
     mkhl.direnv
     # Devcontainers
     # ms-vscode-remote.remote-containers
+    # Jupyter
+    #     ms-python.python
+    ms-toolsai.jupyter
+    ms-toolsai.jupyter-renderers
+    ms-toolsai.jupyter-keymap
+    ms-toolsai.vscode-jupyter-cell-tags
   ];
   marketplaceExtensionListRelease = with marketplaceExtensionsRelease; [
   ];
