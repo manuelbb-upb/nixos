@@ -15,11 +15,6 @@
       inputs.hyprland.follows = "hyprland";
     };
 
-    # hypridle = {
-    #   url = "github:hyprwm/hypridle";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
-
     hyprsplit = {
       url = "github:shezdy/hyprsplit";
       inputs.hyprland.follows = "hyprland";
@@ -31,34 +26,43 @@
       inputs.home-manager.follows = "home-manager";
     };
 
+    # up-to-date vscode extensions:
     nix-vscode-extensions = {
       url = "github:nix-community/nix-vscode-extensions";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    rycee-nurpkgs = {
-      url = gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons;
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
+    # tools to facilitate running unpatched binaries:
     nix-alien = {
       url = "github:thiagokokada/nix-alien";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    
-    nur.url = github:nix-community/NUR;
 
-    catppuccin.url = "github:catppuccin/nix";
-
-    #split-monitor-workspaces = {
-    #  url = "github:Duckonaut/split-monitor-workspaces";
-    #  inputs.hyprland.follows = "hyprland"; # <- make sure this line is present for the plugin to work as intended
-    #};
+    # »The Nix User Repository (NUR) is a community-driven meta repository for Nix packages«
+    # I use it to access the firefox addons provided by `rycee`.
+    nur = {
+      url = github:nix-community/NUR;
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     stylix = {
       url = "github:danth/stylix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    nix-matlab-ld = {
+      url = "github:manuelbb-upb/nix-matlab-ld";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };  
+    # hypridle = {
+    #   url = "github:hyprwm/hypridle";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
+
+    #split-monitor-workspaces = {
+    #  url = "github:Duckonaut/split-monitor-workspaces";
+    #  inputs.hyprland.follows = "hyprland"; # <- make sure this line is present for the plugin to work as intended
+    #};
 
     /*
     scientific-fhs = {
@@ -70,10 +74,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     */
-    nix-matlab-ld = {
-      url = "github:manuelbb-upb/nix-matlab-ld";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };  
   };
 
   outputs = inputs@{ 
@@ -82,17 +82,16 @@
     home-manager, 
     hyprland, 
     hyprland-plugins,
-    # hyprpanel,
     plasma-manager, 
     nur, 
-    catppuccin, 
-    #split-monitor-workspaces, 
     hyprsplit,
     stylix,
-    #scientific-fhs,
-    #nix-matlab,
     nix-matlab-ld,
     nix-alien,
+    #scientific-fhs,
+    # hyprpanel,
+    #split-monitor-workspaces, 
+    #nix-matlab,
     ... 
   }: 
   let
@@ -100,59 +99,66 @@
 
     pkgs = nixpkgs.legacyPackages.${system};
 
+    # some of my machines {are/have been} docked to displaylink docks
+    # these need special video drivers.
+    # first, fetch proprietary source for displaylink driver
     displaylink_src = pkgs.fetchurl {
-      url = "https://www.synaptics.com/sites/default/files/exe_files/2024-05/DisplayLink%20USB%20Graphics%20Software%20for%20Ubuntu6.0-EXE.zip";
-      name = "displaylink-600.zip";
-      hash = "sha256-/HqlGvq+ahnuBCO3ScldJCZp8AX02HM8K4IfMzmducc=";
+      url = "https://www.synaptics.com/sites/default/files/exe_files/2024-10/DisplayLink%20USB%20Graphics%20Software%20for%20Ubuntu6.1-EXE.zip";
+      name = "displaylink-610.zip";
+      hash = "sha256-RJgVrX+Y8Nvz106Xh+W9N9uRLC2VO00fBJeS8vs7fKw=";
     }; 
-  in
-  {
+    # then, prepare an overlay for `nixpkgs` using the source
     displaylink_overlay = (final: prev: {
       displaylink = prev.displaylink.overrideAttrs (new: old: {
+        version = "6.1.0-17";
         src = displaylink_src;
       });
     });
-  
-    nixosConfigurations = {
-      "manuel-t14g1" = nixpkgs.lib.nixosSystem {
-        inherit system;
-        specialArgs = {
-          inherit self;
-        };
-        modules = [
-          ({self, ...}: {
-            nixpkgs.overlays = [ 
-              self.displaylink_overlay
-              nur.overlay
-              # hyprpanel.overlay
-            ];
-          })
-          catppuccin.nixosModules.catppuccin
-          stylix.nixosModules.stylix
-          ./configuration.nix
-          {
-            _module.args = { inherit inputs; };
-          }
-          home-manager.nixosModules.home-manager
-          {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.backupFileExtension = builtins.toString(builtins.currentTime) + ".hmbackup";
-            home-manager.sharedModules = [
-              plasma-manager.homeManagerModules.plasma-manager
-              catppuccin.homeManagerModules.catppuccin
-            ];
-
-            home-manager.users.manuel = import ./home_configs/manuel/home.nix;
-
-            # Optionally, use home-manager.extraSpecialArgs to pass
-            # arguments to home.nix
-            home-manager.extraSpecialArgs = {
-              inherit inputs;
-            };
-          }
-        ];
+  in
+  {
+    # for multi-machine/multi-host tips see
+    # https://discourse.nixos.org/t/flakes-how-to-automatically-set-machine-hostname-to-nixosconfiguration-name/45217 
+    nixosConfigurations = pkgs.lib.genAttrs [
+      "manuel-p14sg5"
+      "manuel-t14g1"
+    ] (hostname: nixpkgs.lib.nixosSystem {
+      inherit system;
+      specialArgs = {
+        inherit self;
       };
-    };
+      modules = [
+        ({self, ...}: {
+          # pass overlays for additional or modified packages:
+          nixpkgs.overlays = [ 
+            displaylink_overlay
+            nur.overlays.default
+            # hyprpanel.overlay
+          ];
+        })
+        stylix.nixosModules.stylix
+        ./${hostname}/configuration.nix
+        {
+          # make `inputs` available in for module in `configuration.nix`
+          _module.args = { inherit inputs hostname; };
+        }
+        # generate home-manager configuration for `hostname`
+        home-manager.nixosModules.home-manager {
+          home-manager.useGlobalPkgs = true;
+          home-manager.useUserPackages = true;
+          home-manager.backupFileExtension = builtins.toString(builtins.currentTime) + ".hmbackup"; # this is impure
+          home-manager.sharedModules = [
+            plasma-manager.homeManagerModules.plasma-manager
+          ];
+
+          home-manager.users.manuel = import ./${hostname}/home.nix;
+
+          # Optionally, use home-manager.extraSpecialArgs to pass
+          # arguments to home.nix
+          home-manager.extraSpecialArgs = {
+            inherit inputs;
+          };
+        }
+      ];
+    });
   };
 }

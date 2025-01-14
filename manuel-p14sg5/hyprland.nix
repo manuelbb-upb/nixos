@@ -11,7 +11,7 @@
     brightnessctl
     networkmanagerapplet
     kdePackages.kwallet-pam
-    blueman
+    # blueman
     # screenshots:
     hyprshot
     swappy
@@ -36,82 +36,82 @@
   #     Environment = "XDG_RUNTIME_DIR=/run/user/%U";
   #   };
   # };
-  services.kanshi = {
-    enable = true;
-    systemdTarget = "hyprland-session.target";
-    settings = [
-      {
-        output.criteria = "eDP-1";
-        output.mode = "1920x1080@60.01";
-        output.scale = 1.0;
-        output.position = "0,0";
-      }
-      {
-        output.criteria = "Lenovo Group Limited LEN S28u-10 VNA4XG6D";
-        output.mode = "3840x2160@60.0";
-        output.scale = 1.5;
-        output.position = "1920,0";
-      }
-      {
-        output.criteria = "Lenovo Group Limited LEN S28u-10 VNA4XG5L";
-        output.mode = "3840x2160@60.0";
-        output.scale = 1.5;
-        output.position = "4480,0";
-      }
-      {
-        profile.name = "solo";
-        profile.outputs = [
-          {
-            criteria = "eDP-1";
-            status = "enable";
-          }
-        ];
-      }
-      {
-        profile.name = "home1";
-        profile.outputs = [
-          {
-            criteria = "eDP-1";
-            status = "disable";
-          }
-          {
-            criteria = "Lenovo Group Limited LEN S28u-10 VNA4XG6D";
-            status = "enable";
-          }
-        ];
-      }
-      {
-        profile.name = "home2";
-        profile.outputs = [
-          {
-            criteria = "eDP-1";
-            status = "disable";
-          }
-          {
-            criteria = "Lenovo Group Limited LEN S28u-10 VNA4XG5L";
-            status = "enable";
-          }
-        ];
-      }
-      {
-        profile.name = "home3";
-        profile.outputs = [
-          {
-            criteria = "eDP-1";
-            status = "disable";
-          }
-          {
-            criteria = "Lenovo Group Limited LEN S28u-10 VNA4XG5L";
-            status = "enable";
-          }
-          {
-            criteria = "Lenovo Group Limited LEN S28u-10 VNA4XG6D";
-            status = "enable";
-          }
-        ];
-      }
-    ];
-  };
+#   services.kanshi = {
+#     enable = true;
+#     systemdTarget = "hyprland-session.target";
+#     settings = [
+#       {
+#         output.criteria = "eDP-1";
+#         output.mode = "1920x1080@60.01";
+#         output.scale = 1.0;
+#         output.position = "0,0";
+#       }
+#       {
+#         output.criteria = "Lenovo Group Limited LEN S28u-10 VNA4XG6D";
+#         output.mode = "3840x2160@60.0";
+#         output.scale = 1.5;
+#         output.position = "1920,0";
+#       }
+#       {
+#         output.criteria = "Lenovo Group Limited LEN S28u-10 VNA4XG5L";
+#         output.mode = "3840x2160@60.0";
+#         output.scale = 1.5;
+#         output.position = "4480,0";
+#       }
+#       {
+#         profile.name = "solo";
+#         profile.outputs = [
+#           {
+#             criteria = "eDP-1";
+#             status = "enable";
+#           }
+#         ];
+#       }
+#       {
+#         profile.name = "home1";
+#         profile.outputs = [
+#           {
+#             criteria = "eDP-1";
+#             status = "disable";
+#           }
+#           {
+#             criteria = "Lenovo Group Limited LEN S28u-10 VNA4XG6D";
+#             status = "enable";
+#           }
+#         ];
+#       }
+#       {
+#         profile.name = "home2";
+#         profile.outputs = [
+#           {
+#             criteria = "eDP-1";
+#             status = "disable";
+#           }
+#           {
+#             criteria = "Lenovo Group Limited LEN S28u-10 VNA4XG5L";
+#             status = "enable";
+#           }
+#         ];
+#       }
+#       {
+#         profile.name = "home3";
+#         profile.outputs = [
+#           {
+#             criteria = "eDP-1";
+#             status = "disable";
+#           }
+#           {
+#             criteria = "Lenovo Group Limited LEN S28u-10 VNA4XG5L";
+#             status = "enable";
+#           }
+#           {
+#             criteria = "Lenovo Group Limited LEN S28u-10 VNA4XG6D";
+#             status = "enable";
+#           }
+#         ];
+#       }
+#     ];
+#   };
 
   #services.flameshot = {
   #  enable = true;

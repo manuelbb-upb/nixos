@@ -4,30 +4,22 @@
 {
   config
   , pkgs
-  , inputs
   , lib
   , options
+  ## extra args
+  , inputs
+  , hostname
   , ... 
 }:
 {
-  imports =  [ 
-    # Include the results of the hardware scan.
-    ./hardware-configuration.nix
-  ];
+  imports =  [ ];
   
   # Bootloader.
+  boot.kernelPackages = pkgs.linuxPackages_latest;
+
   boot.extraModulePackages = with config.boot.kernelPackages; [
     evdi
   ];
-
-  stylix.enable = true;
-  stylix.polarity = "dark";
-  stylix.autoEnable = false;
-  stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
-  stylix.image = ./wallpapers/Wassily_Kandinsky_Composition_VIII.jpg;
-  stylix.targets.grub.enable = true;
-
-  #catppuccin.flavor = "mocha";
 
   boot.loader = {
     timeout = null;
@@ -41,8 +33,12 @@
     efi.canTouchEfiVariables = true;
   };
 
-  networking.hostName = "manuel-t14g1"; # Define your hostname.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+  stylix.enable = true;
+  stylix.polarity = "dark";
+  stylix.autoEnable = false;
+  stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
+  stylix.image = ../wallpapers/Wassily_Kandinsky_Composition_VIII.jpg;
+  stylix.targets.grub.enable = true;
 
   # Make flake registry entry `nixpkgs` (used by `nix` commands)
   # match the `nixpkgs` used by “old” commands relying on `NIX_PATH`, see
@@ -57,14 +53,18 @@
       "flakes" 
     ];
   };
+  
+  # Allow unfree packages
+  nixpkgs.config.allowUnfree = true;
 
-  # add community templates:
+  # add community flake templates:
   nix.registry.communityTemplates.to = {
     owner = "nix-community";
     repo = "templates";
     type = "github";
   };
 
+  # add private flake templates:
   nix.registry.myTemplates.to = {
     owner = "manuelbb-upb";
     repo = "nix-templates";
@@ -77,6 +77,9 @@
     q /var/tmp 1777 root root 6d
   '';
       
+  networking.hostName = hostname; 
+  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
@@ -87,12 +90,11 @@
   time.timeZone = "Europe/Berlin";
 
   fonts.fontDir.enable = true;
-  fonts.packages = with pkgs; [
+  fonts.packages = (with pkgs; [
     julia-mono
     lmodern
-    nerdfonts
     corefonts
-  ];
+  ]) ++ builtins.filter lib.attrsets.isDerivation (builtins.attrValues pkgs.nerd-fonts);
 
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
@@ -111,13 +113,9 @@
 
   # Enable the X11 windowing system.
   services.xserver = {
-    # You can disable this if you're only using the Wayland session.
+    # You can disable this if you're only using the Wayland session. 
+    # (Not sure if the above comment is true still.)
     enable = true;
-    videoDrivers = [
-      "amdgpu"
-      "displaylink"
-      "modesetting"
-    ];
   };
 
   # Enable the KDE Plasma Desktop Environment.
@@ -133,6 +131,7 @@
   #     enable = true;
   #     user = "manuel";
   #   };
+    # `autoLogin` disabled to unlock kwallet
     sddm = {
       enable = true;
       wayland.enable = true;
@@ -142,6 +141,7 @@
 
   security.pam.services = {
     sddm = {
+      # automatically unlock kwallet upon login
       kwallet = {
         enable = true;
         package = pkgs.kdePackages.kwallet-pam;
@@ -158,7 +158,7 @@
   };
 
   # Configure console keymap
-  console.keyMap = "de";
+  console.keyMap = "de";  # or "neo"
 
   xdg = {
     menus = {
@@ -182,7 +182,6 @@
     enable = true;
     enable32Bit = true;
     extraPackages = with pkgs; [
-      amdvlk
       mesa.drivers
     ];
   };
@@ -192,7 +191,7 @@
     enable = true;
     powerOnBoot = true;
   };
-  services.blueman.enable = true;
+  #services.blueman.enable = true;
 
   # Enable sound with pipewire.
   hardware.pulseaudio.enable = false;
@@ -223,7 +222,6 @@
     description = "Manuel";
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
-      thunderbird
     ];
     shell = pkgs.zsh;
   };
@@ -237,12 +235,6 @@
         mesa        # installed anyways, required by Matlab
       ]
     );
-#     libraries = with pkgs; [
-#       glib
-#       stdenv.cc.cc
-#       stdenv.cc.bintools
-#       stdenv.cc.cc.lib
-#     ];
   };
   # set `/bin` and `/usr/bin` for unpatched binaries:
   services.envfs.enable = true;
@@ -251,9 +243,6 @@
 
   # Install firefox.
   programs.firefox.enable = true;
-
-  # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
@@ -299,19 +288,9 @@
     };
   };
 
-#   # hacks to make rocm available
-#   systemd.tmpfiles.rules = [
-#     "L+    /opt/rocm/hip   -    -    -     -    ${pkgs.rocmPackages.clr}"
-#   ];
-#   hardware.graphics.extraPackages = with pkgs; [
-#     rocmPackages.clr.icd
-#   ];
-#   environment.variables.HSA_OVERRIDE_GFX_VERSION = "10.3.0";
-# 
   environment.variables = {
     EDITOR="vim";
   };
-
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.

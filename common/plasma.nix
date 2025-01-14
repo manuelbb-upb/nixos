@@ -39,10 +39,11 @@
         "Switch to Desktop 2" = "Meta+G";
         "Switch to Desktop 3" = "Meta+F";
         "Switch to Desktop 4" = "Meta+Q";
+        "Overview" = "";
       };
       "services/org.kde.krunner.desktop"."_launch" = "Meta+U";# ["Meta+U" "Alt+F2"];
       "services/org.kde.konsole.desktop"."_launch" = "none";  # clash with kitty 
-      "services/kitty.desktop"."_launch" = "Meta+W";  # "Tlike in Terminal
+      "services/kitty.desktop"."_launch" = "Meta+W";  # "T" like in Terminal
     };
   };
 }

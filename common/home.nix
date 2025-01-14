@@ -10,13 +10,15 @@
 
   qt = {
     enable = true;
+    /*
     platformTheme = {
       name = "kvantum";
     };
     style = {
       name = "kvantum";
       catppuccin.enable = true;
-    };
+      };
+      */
   };
   # When this issue is solved,
   # https://github.com/danth/stylix/issues/489
@@ -64,12 +66,6 @@
     hunspellDicts.de_DE
 
     inputs.nix-alien.packages.${system}.nix-alien
-    # # It is sometimes useful to fine-tune packages, for example, by applying
-    # # overrides. You can do that directly here, just don't forget the
-    # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
-    # # fonts?
-    # (pkgs.nerdfonts.override { fonts = [ "FantasqueSansMono" ]; })
-
     # # You can also create simple shell scripts directly inside your
     # # configuration. For example, this adds a command 'my-hello' to your
     # # environment:
@@ -129,23 +125,20 @@
   
   imports = [
     ./zsh.nix
-    #inputs.scientific-fhs.nixosModules.default
     ./nnn.nix
     ./julia.nix
     ./matlab.nix
     ./stylix.nix
     ./plasma.nix
-    ./email_tud.nix
+    ./thunderbird.nix
+    ./email-accounts.nix
     ./firefox.nix
     ./brave.nix
     ./vscode.nix
     ./vim.nix
-    #./nu.nix
-    ./hyprland.nix
-    ./waybar.nix
-    ./hyprlock.nix
-    ./hypridle.nix
     ./kitty.nix
+    #./nu.nix
+    #inputs.scientific-fhs.nixosModules.default
   ];
 
   /*

@@ -1,13 +1,13 @@
 {pkgs, config, ...}:
 {
   stylix.targets.gtk.enable = true;
-#  stylix.targets.kde.enable = true;
+  stylix.targets.kde.enable = true;
   stylix.targets.hyprland.enable = true;
   stylix.targets.kitty.enable = true;
   stylix.fonts = {
     monospace = {
       name = "ComicShannsMono Nerd Font";
-      package = pkgs.nerdfonts;
+      package = pkgs.nerd-fonts.comic-shanns-mono;
     };
   };
   #stylix.fonts.serif = config.stylix.fonts.monospace;
