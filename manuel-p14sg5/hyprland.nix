@@ -374,22 +374,4 @@
     #inputs.split-monitor-workspaces.packages.${pkgs.system}.split-monitor-workspaces
     inputs.hyprsplit.packages.${pkgs.system}.hyprsplit
   ];
-
-  services.hyprpaper = {
-    enable = true;
-    settings = {
-      ipc = "off";
-      splash = true;
-      preload = [
-        "/etc/nixos/wallpapers/Wassily_Kandinsky_Composition_VIII.jpg"
-      ];
-      wallpaper = [
-        ", /etc/nixos/wallpapers/Wassily_Kandinsky_Composition_VIII.jpg"
-      ];
-    };
-  };
-
-  services.dunst = {
-    enable = true;
-  };
 }
