@@ -10,6 +10,7 @@
     "acpi_backlight=vendor" # This makes the the brightness keys work!!
     "nvidia.NVreg_RegistryDwords=EnableBrightnessControl=1" # About this, I am not sure... could bisect
     "i915.force_probe=7d55"
+    "i915.enable_psr=0"
     "btusb.enable_autosuspend=n"
   ];
   # Make Trackpoint slower, see https://wiki.archlinux.org/title/TrackPoint
