@@ -33,6 +33,8 @@
     efi.canTouchEfiVariables = true;
   };
 
+  hardware.enableRedistributableFirmware = true;
+
   stylix.enable = true;
   stylix.polarity = "dark";
   stylix.autoEnable = false;
