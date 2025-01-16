@@ -1,6 +1,8 @@
 {pkgs, ...} :
 {
-  services.hypridle.enable = true;
+  services.hypridle.enable = false;
+  # disabling for now, i dont want it in Plasma, my current main DE,
+  # see https://github.com/NixOS/nixpkgs/pull/355416
   services.hypridle.settings = {
     general =  {
       lock_cmd = "pidof hyprlock || hyprlock --immediate"; 
