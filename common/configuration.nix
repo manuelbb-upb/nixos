@@ -202,13 +202,15 @@
   #services.blueman.enable = true;
 
   # Enable sound with pipewire.
-  hardware.pulseaudio.enable = false;
+  services.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
     alsa.enable = true;
     alsa.support32Bit = true;
     pulse.enable = true;
+
+    wireplumber.enable = true;
     # If you want to use JACK applications, uncomment this
     #jack.enable = true;
 
@@ -259,6 +261,8 @@
     killall
     hwinfo
     unzip
+    gcc         # A C compiler does not hurt and is required 
+                # by many other tools (e.g., Julia's PackageCompiler)
     pciutils    # lspci etc
     usbutils    # lsusb
     lsof        # `lsof +f -- /dev/sdX`
