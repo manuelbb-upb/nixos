@@ -33,6 +33,15 @@ in
     AttrTrackpointMultiplier=0.4
   '';
 
+  fileSystems."/boot" = {
+    device = "/dev/disk/by-uuid/9C81-E64F";
+    fsType = "vfat";
+    options = [ 
+      "fmask=0077" 
+      "dmask=0077"
+    ];
+  };
+
   # Load NVIDIA drivers for graphical sessions:
   services.xserver.videoDrivers = [
     "nvidia"

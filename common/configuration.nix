@@ -30,7 +30,10 @@
       configurationLimit = 5;
       efiSupport = true;
     };
-    efi.canTouchEfiVariables = true;
+    efi = {
+      canTouchEfiVariables = true;
+      efiSysMountPoint = "/boot/efi";
+    };
   };
 
   hardware.enableAllFirmware = true;
