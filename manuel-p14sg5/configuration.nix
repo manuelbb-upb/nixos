@@ -20,4 +20,21 @@
     # Include common config
     ../common/configuration.nix
   ];
+
+  virtualisation.virtualbox = {
+    host = {
+      enable = true;
+      enableExtensionPack = true;
+      enableKvm = true;
+      addNetworkInterface = false;
+    };
+  };
+  users.users.manuel.extraGroups = ["disk" "vboxusers"];
+
+  environment.etc."NetworkManager/system-connections/eduroam.nmconnection" = { 
+    text = builtins.readFile ../eduroam.nmconnection;
+    mode = "0600";
+    user = "root";
+    group = "root";
+  };
 }

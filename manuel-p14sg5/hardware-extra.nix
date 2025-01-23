@@ -1,10 +1,19 @@
 { config, lib, pkgs, modulesPath, ... }:
-
+let
+  nvidia-pkg = config.boot.kernelPackages.nvidiaPackages.stable;
+in
 {
 
   services.fwupd.enable = true;
 
-  boot.initrd.kernelModules = [ "i915" ];
+  boot.initrd.kernelModules = [ 
+    "i915" 
+    "nvidia" 
+    "nvidia_modeset" 
+    "nvidia_uvm" 
+    "nvidia_drm" 
+  ];
+  boot.extraModulePackages = [ config.boot.kernelPackages.nvidia_x11 ];
 
   boot.kernelParams = [ 
     "acpi_backlight=vendor" # This makes the the brightness keys work!!
@@ -55,17 +64,17 @@
 
     # Enable the Nvidia settings menu,
     # accessible via `nvidia-settings`.
-    nvidiaSettings = true;
+    nvidiaSettings = false;
 
     # Optionally, you may need to select the appropriate driver version for your specific GPU.
-    package = config.boot.kernelPackages.nvidiaPackages.stable;
+    package = nvidia-pkg;
 
-    # # Seems to only work with X11...
-    # prime = {
-    #   sync.enable = true;
-    #   intelBusId = "PCI:0:2:0";
-    #   nvidiaBusId = "PCI:1:0:0";
-    # };
+    # Seems to only work with X11...
+    prime = {
+      offload.enable = true;
+      intelBusId = "PCI:0:2:0";
+      nvidiaBusId = "PCI:1:0:0";
+    };
   };
   # Alternative for Plasma|Wayland
   # environment.variables = {
