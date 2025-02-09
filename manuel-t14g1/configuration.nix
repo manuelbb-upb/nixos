@@ -19,6 +19,6 @@
     ./hardware-extra.nix
     # Include common config
     ../common/configuration.nix
-    ./samba.nix
+    #./samba.nix
   ];
 }
