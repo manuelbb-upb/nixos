@@ -1,4 +1,9 @@
-# https://github.com/jarun/nnn/blob/master/misc/quitcd/quitcd.bash_sh_zsh
+# Configure `nnn` to `cd` into shown directory on exit for `zsh`.
+# See https://github.com/jarun/nnn/wiki/Basic-use-cases#configure-cd-on-quit
+# Source:
+# https://github.com/jarun/nnn/blob/master/misc/quitcd/quitcd.bash_sh_zish
+# 1) Place into ${XDG_CONFIG_HOME}/zsh-custom-funcs
+# 2) in ~/.zshrc add `source "${XDG_CONFIG_HOME}/zsh-custom-funcs/quitcd.sh`
 n ()
 {
     # Block nesting of nnn in subshells

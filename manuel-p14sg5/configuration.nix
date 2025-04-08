@@ -21,6 +21,13 @@
     ../common/configuration.nix
   ];
 
+  hardware.graphics.extraPackages = with pkgs; [
+    ## accelerated video playback with intel cpu
+    intel-media-driver # LIBVA_DRIVER_NAME=iHD
+    intel-vaapi-driver # LIBVA_DRIVER_NAME=i965 (older but works better for Firefox/Chromium)
+    libvdpau-va-gl
+  ];
+
   virtualisation.virtualbox = {
     host = {
       enable = true;
@@ -29,6 +36,27 @@
       addNetworkInterface = false;
     };
   };
+
+  environment.sessionVariables = { 
+    LIBVA_DRIVER_NAME = "iHD"; # Force intel-media-driver
+    MATLAB_INSTALL_DIR = "$HOME/bins/MATLAB/R2024b";
+  };
+
+  environment.systemPackages = with pkgs; [
+    kdePackages.plasma-thunderbolt
+    ### academia
+    zotero
+    texliveFull
+    #podman-tui  # status of containers in the terminal
+    #podman-compose
+    (inputs.scientific-nix-pkgs.packages.${pkgs.system}.julia-ld.override {
+      version = "1.11.3";
+      enable-matlab = true;
+    })
+    inputs.scientific-nix-pkgs.packages.${pkgs.system}.matlab
+    inputs.scientific-nix-pkgs.packages.${pkgs.system}.matlab.shell-script
+    cudatoolkit
+  ];
   users.users.manuel.extraGroups = ["disk" "vboxusers"];
 
   environment.etc."NetworkManager/system-connections/eduroam.nmconnection" = { 

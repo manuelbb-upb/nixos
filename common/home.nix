@@ -10,23 +10,7 @@
 
   qt = {
     enable = true;
-    /*
-    platformTheme = {
-      name = "kvantum";
-    };
-    style = {
-      name = "kvantum";
-      catppuccin.enable = true;
-      };
-      */
   };
-  # When this issue is solved,
-  # https://github.com/danth/stylix/issues/489
-  # then we can delete catpuccin for kde styling
-
-  #catppuccin.pointerCursor.enable = true;
-  #catppuccin.pointerCursor.accent = "dark";
-
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "manuel";
@@ -44,28 +28,6 @@
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = with pkgs; [
-    wev           # debug Wayland events
-    jq            # parse JSON in terminal
-    fastfetch      # print system information in terminal
-    filelight       # KDE tool for storage analysis
-    bitwarden       # password manager
-    bitwarden-cli   # password manager command line tool
-    duplicacy
-    protonvpn-gui
-    networkmanager-openconnect  # work VPN
-    openconnect                 # work VPN
-    gimp
-    google-chrome
-    zotero
-    #julia        # I use scientific-fhs for global Julia
-    texliveFull
-    (pkgs.callPackage ./segoe_ui.nix {})  # additional Microsoft font
-    libreoffice-qt
-    hunspell              # spellchecking for libreoffice
-    hunspellDicts.en_US
-    hunspellDicts.de_DE
-
-    inputs.nix-alien.packages.${system}.nix-alien
     # # You can also create simple shell scripts directly inside your
     # # configuration. For example, this adds a command 'my-hello' to your
     # # environment:
@@ -114,20 +76,9 @@
     enable = true;
   };
 
-  nixpkgs.config.allowUnfree = true;
-  xdg.configFile."nixpkgs/config.nix".text = ''
-    {
-      allowUnfree = true;
-    }
-  '';
-
   fonts.fontconfig.enable = true;
   
   imports = [
-    ./zsh.nix
-    ./nnn.nix
-    ./julia.nix
-    ./matlab.nix
     ./stylix.nix
     ./plasma.nix
     ./thunderbird.nix
@@ -136,7 +87,6 @@
     ./brave.nix
     ./vscode.nix
     ./vim.nix
-    ./kitty.nix
     #./nu.nix
     #inputs.scientific-fhs.nixosModules.default
   ];

@@ -15,12 +15,17 @@
   imports =  [ ];
   
   # Bootloader.
+
+  ## Linux kernel to use:
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
   boot.extraModulePackages = with config.boot.kernelPackages; [
     evdi
-  ];
+  ]; # I think this was needed for displaylink?
 
+  boot.supportedFilesystems = [ "ntfs" ];
+
+  ## Grub configuration:
   boot.loader = {
     timeout = null;
     grub = {
@@ -44,7 +49,16 @@
   stylix.autoEnable = false;
   stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
   stylix.image = ../wallpapers/Wassily_Kandinsky_Composition_VIII.jpg;
-  stylix.targets.grub.enable = true;
+  stylix.targets = {
+    gtk.enable = true;
+    grub.enable = true;
+  };
+  stylix.fonts = {
+    monospace = {
+      name = "ComicShannsMono Nerd Font";
+      package = pkgs.nerd-fonts.comic-shanns-mono;
+    };
+  };
 
   stylix.homeManagerIntegration = {
     autoImport = true;    # make hm module available for any user
@@ -105,7 +119,10 @@
     julia-mono
     lmodern
     corefonts
-  ]) ++ builtins.filter lib.attrsets.isDerivation (builtins.attrValues pkgs.nerd-fonts);
+  ]) ++ 
+  builtins.filter lib.attrsets.isDerivation (builtins.attrValues pkgs.nerd-fonts) ++ [
+    (pkgs.callPackage ./segoe_ui.nix {})  # additional Microsoft font
+  ];
 
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
@@ -122,6 +139,8 @@
     LC_TIME = "de_DE.UTF-8";
   };
 
+  services.hardware.bolt.enable = true;
+
   # Enable the X11 windowing system.
   services.xserver = {
     # You can disable this if you're only using the Wayland session. 
@@ -132,7 +151,7 @@
   # Enable the KDE Plasma Desktop Environment.
   services.desktopManager.plasma6.enable = true;
 
-  programs.hyprland.enable = true;
+  #programs.hyprland.enable = true;
 
   # Optional, hint Electron apps to use Wayland:
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
@@ -192,9 +211,6 @@
   hardware.graphics = {
     enable = true;
     enable32Bit = true;
-    extraPackages = with pkgs; [
-      mesa.drivers
-    ];
   };
 
   # Enable Bluetooth
@@ -257,27 +273,67 @@
   # Install firefox.
   programs.firefox.enable = true;
 
+  programs.neovim = {
+    enable = true;
+    withPython3 = true;
+    withNodeJs = true;
+  };
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
+    ## basic tools
     htop
-    killall
-    hwinfo
-    unzip
-    gcc         # A C compiler does not hurt and is required 
-                # by many other tools (e.g., Julia's PackageCompiler)
-    pciutils    # lspci etc
-    usbutils    # lsusb
-    lsof        # `lsof +f -- /dev/sdX`
-    toybox      # implementation of many basic tools (`dd` etc.)
-    wl-clipboard
     wget
     curl
     git
-    veracrypt
+    ripgrep
+    killall
+    coreutils
+    unzip
+    unrar
+    wl-clipboard
+    pciutils    # lspci etc
+    usbutils    # lsusb
+    lsof        # `lsof +f -- /dev/sdX`
     gparted
-    podman-tui  # status of containers in the terminal
-    podman-compose
+    wev           # debug Wayland events
+    mesa-demos  # glxinfo
+    ### sys info
+    inxi        # system information
+    fastfetch   # print system information in terminal
+    kdePackages.filelight   # KDE tool for storage analysis
+    inputs.nix-alien.packages.${system}.nix-alien   # companion to nix-ld
+      # `nix-alien-ld myapp` spawn inside shell with `NIX_LD_LIBRARY_PATH` populated
+      # `nix-alien-find-libs myapp` list needed deps
+    ### browser
+    google-chrome
+    ### vpn
+    networkmanager-openconnect  # work VPN
+    openconnect                 # work VPN
+    ### office
+    gimp
+    libreoffice-qt
+    hunspell              # spellchecking for libreoffice
+    hunspellDicts.en_US
+    hunspellDicts.de_DE
+       ### backup tools
+    chezmoi
+    duplicacy       # backup tool for data
+    bitwarden       # password manager
+    bitwarden-cli   # password manager command line tool
+    ## shell + terminal
+    zsh
+    kitty
+    nnn
+    ffmpeg            ## for preview in nnn
+    ffmpegthumbnailer ## for preview in nnn
+    imagemagick       ## for previews in kitty / nice-to-have anyways
+    ## programming
+    python3     # just nice to have a global python available from time to time
+    ### custom julia
+    gcc         # A C compiler does not hurt and is required 
+                # by many other tools (e.g., Julia's PackageCompiler)
+    gnumake     # `make` also nice to have
     ((vim_configurable.override {}).customize {
       name = "vim";
       vimrcConfig.packages.myplugins = with pkgs.vimPlugins; {
