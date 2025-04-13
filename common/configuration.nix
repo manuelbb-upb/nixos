@@ -77,6 +77,13 @@
       "nix-command"
       "flakes" 
     ];
+    ## community cache (e.g. for CUDA)
+    substituters = [
+      "https://nix-community.cachix.org"
+    ];
+    trusted-public-keys = [
+      "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+    ];
   };
   
   # Allow unfree packages
@@ -325,7 +332,7 @@
     zsh
     kitty
     nnn
-    ffmpeg            ## for preview in nnn
+    ffmpeg            ## for preview in nnn + media in general
     ffmpegthumbnailer ## for preview in nnn
     imagemagick       ## for previews in kitty / nice-to-have anyways
     ## programming

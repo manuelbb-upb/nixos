@@ -1,6 +1,22 @@
 {pkgs, ...}:
 {
-  programs.nnn.enable = true;
-  home.file.".config/zsh-custom-funcs/quitcd".source = ./quitcd.bash_sh_zsh;
-  programs.zsh.initExtra = "source $HOME/.config/zsh-custom-funcs/quitcd";
+  programs.nnn = {
+    enable = true;
+    extraPackages = with pkgs; [
+      ffmpeg
+      ffmpegthumbnailer
+      imagemagick
+    ];
+    plugins.mappings = {
+      p = "preview-tui";
+    };
+  };
+
+  home.sessionVariables = {
+    NNN_FIFO="/tmp/nnn.fifo";
+    NNN_TERMINAL="kitty";
+  };
+
+  home.file.".config/zsh-custom-funcs/n".source = ../scripts/n.zsh;
+  programs.zsh.initExtra = "autoload -Uz n";
 }

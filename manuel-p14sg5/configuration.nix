@@ -56,6 +56,8 @@
     inputs.scientific-nix-pkgs.packages.${pkgs.system}.matlab
     inputs.scientific-nix-pkgs.packages.${pkgs.system}.matlab.shell-script
     cudatoolkit
+    cudaPackages.cudnn
+    cudaPackages.libcublas
   ];
   users.users.manuel.extraGroups = ["disk" "vboxusers"];
 

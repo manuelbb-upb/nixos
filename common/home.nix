@@ -2,8 +2,7 @@
 
 {
   home.shellAliases = {
-    "vimHome" = "vimcd /etc/nixos/home_configs/manuel";
-    "vimBase" = "vimcd /etc/nixos";
+    #"vimHome" = "vimcd /etc/nixos/home_configs/manuel";
   };
 
   gtk.enable = true;
@@ -80,6 +79,9 @@
   
   imports = [
     ./stylix.nix
+    ./zsh.nix
+    ./nnn.nix
+    ./kitty.nix
     ./plasma.nix
     ./thunderbird.nix
     ./email-accounts.nix
@@ -91,20 +93,6 @@
     #inputs.scientific-fhs.nixosModules.default
   ];
 
-  /*
-  programs.scientific-fhs = {
-    enable = true;
-    juliaVersions = [
-      {
-        version="1.11.1";
-        default=true;
-      }
-    ];
-    enableNVIDIA = false;
-    enableGraphical = true;
-    };
-  */
-  
   # Enable and configure git
   programs.git = {
     enable = true;
