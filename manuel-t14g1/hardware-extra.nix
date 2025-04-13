@@ -29,4 +29,11 @@
     amdvlk
   ];
 
+  boot.loader.grub.enableCryptodisk=false;
+  /*
+  boot.initrd = {
+    secrets."root.key" = null;
+    luks.devices."luks-4129ecf4-5f76-4ddc-9cf8-f37c9fc8d655".keyFile = "/root.key";
+  };
+  */
 }

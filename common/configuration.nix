@@ -36,6 +36,8 @@
     };
   };
 
+  boot.supportedFilesystems = [ "ntfs" ];
+
   hardware.enableAllFirmware = true;
   hardware.enableRedistributableFirmware = true;
 
