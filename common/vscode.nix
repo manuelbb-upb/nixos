@@ -48,7 +48,7 @@ let
     {
       name = "language-julia";
       publisher = "julialang";
-      version = "1.124.2";
+      version = "1.138.1";
       hash = "sha256-ZwZbR8EQdBlBZlGWeZ8uMSWJFCi8J6SmUCyGMK6Wluw=";
     }
   ];
@@ -61,7 +61,10 @@ in
       enable = true;
       # manage all extenions with home-manager only:
       mutableExtensionsDir = true;
-      profiles.default.extensions = nixpkgsExtensionList ++ marketplaceExtensionList ++ marketplaceExtensionListRelease ++ fetchedExtensionList;
+      profiles.default.extensions = nixpkgsExtensionList ++ 
+        marketplaceExtensionList ++ 
+        marketplaceExtensionListRelease ++ 
+        fetchedExtensionList;
 
       profiles.default.keybindings = [
         {
