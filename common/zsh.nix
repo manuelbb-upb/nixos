@@ -1,11 +1,9 @@
 {pkgs, ...}:
 {
 
-#  home.file.".config/zsh-custom-funcs/dunst_pause".source = ./zsh_dunst_pause.sh;
-
   programs.zsh = {
     enable = true;
-    initExtra = ''
+    initContent = ''
       # Check if the directory exists and is indeed a directory
       if [[ -d "$HOME/.config/zsh-custom-funcs" ]]; then
         fpath+=("$HOME/.config/zsh-custom-funcs")

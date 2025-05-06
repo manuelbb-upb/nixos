@@ -18,5 +18,5 @@
   };
 
   home.file.".config/zsh-custom-funcs/n".source = ../scripts/n.zsh;
-  programs.zsh.initExtra = "autoload -Uz n";
+  programs.zsh.initContent = "autoload -Uz n";
 }

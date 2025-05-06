@@ -7,8 +7,13 @@ in
   home.packages = [
     pkgs.vdhcoapp
   ];
-  stylix.targets.firefox.enable = true;
-  stylix.targets.firefox.firefoxGnomeTheme.enable = true;
+  stylix.targets.firefox = {
+    enable = true;
+    firefoxGnomeTheme.enable = true;
+    profileNames = [
+      "default"
+    ];
+  };
 
   programs.firefox = {
     enable = true;
@@ -25,7 +30,7 @@ in
           user_pref("extensions.autoDisableScopes", 0);
           user_pref("extensions.enabledScopes", 15);
         '';
-        extensions = with addons; [
+        extensions.packages = with addons; [
           firefox-color
           bitwarden
           ublock-origin
