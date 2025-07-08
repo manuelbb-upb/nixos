@@ -305,6 +305,7 @@
     gparted
     wev           # debug Wayland events
     mesa-demos  # glxinfo
+    kdePackages.kdeconnect-kde
     ### sys info
     inxi        # system information
     fastfetch   # print system information in terminal
@@ -320,10 +321,11 @@
     ### office
     gimp
     libreoffice-qt
-    hunspell              # spellchecking for libreoffice
-    hunspellDicts.en_US
-    hunspellDicts.de_DE
-       ### backup tools
+    (hunspellWithDicts ( with hunspellDicts; [ # spellchecking for libreoffice
+      en_US
+      de_DE
+    ]))
+    ### backup tools
     chezmoi
     duplicacy       # backup tool for data
     bitwarden       # password manager
@@ -381,13 +383,22 @@
   # List services that you want to enable:
 
   # Enable the OpenSSH daemon.
-  # services.openssh.enable = true;
+  services.openssh.enable = true;
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
+  networking.firewall = {
+    enable = true;
+    allowedTCPPortRanges = [
+      { from = 1714; to = 1764; }
+    ];
+    allowedUDPPortRanges = [
+      { from = 1714; to = 1764; }
+    ];
+  };
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

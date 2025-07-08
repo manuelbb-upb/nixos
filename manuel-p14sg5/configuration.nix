@@ -45,6 +45,7 @@
   environment.systemPackages = with pkgs; [
     kdePackages.plasma-thunderbolt
     ### academia
+    logseq
     zotero
     texliveFull
     #podman-tui  # status of containers in the terminal

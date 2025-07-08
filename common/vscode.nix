@@ -232,7 +232,11 @@ let
       ];
     };
   };
- 
+
+  userSettings-latex = {
+    "ltex.ltex-ls.path" = "${pkgs.ltex-ls.out}";
+  };
+
   # extension sets shortcuts
   extset-nixpkgs = pkgs.vscode-extensions;
   extset-marketplace = inputs.nix-vscode-extensions.extensions.${pkgs.system}.vscode-marketplace;
@@ -286,6 +290,7 @@ in
   home.packages = [
     pkgs.ltex-ls    # LaTeX language server
   ];
+
   programs.vscode = {
     enable = true;
     # manage all extenions with home-manager only:
@@ -298,7 +303,7 @@ in
       latex = {
         inherit keybindings;
         extensions = exts-common ++ exts-latex;
-        userSettings = userSettings;
+        userSettings = userSettings // userSettings-latex;
       };
       julia = {
         inherit keybindings;
