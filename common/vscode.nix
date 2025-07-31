@@ -61,9 +61,9 @@ in
       enable = true;
       # manage all extenions with home-manager only:
       mutableExtensionsDir = true;
-      extensions = nixpkgsExtensionList ++ marketplaceExtensionList ++ marketplaceExtensionListRelease ++ fetchedExtensionList;
+      profiles.default.extensions = nixpkgsExtensionList ++ marketplaceExtensionList ++ marketplaceExtensionListRelease ++ fetchedExtensionList;
 
-      keybindings = [
+      profiles.default.keybindings = [
         {
           "key" = "shift+space";
           "command" = "workbench.action.focusActiveEditorGroup";
@@ -193,7 +193,7 @@ in
           "when" = "suggestWidgetVisible && textInputFocus";
         }
       ];
-      userSettings = {
+      profiles.default.userSettings = {
         # don't notify about updates (?)
         "update.mode" = "none";
         # Make dev containers use `podman` instead of `docker`

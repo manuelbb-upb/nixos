@@ -21,5 +21,10 @@
     ../common/configuration.nix
     #./samba.nix
   ];
+
+  environment.systemPackages = with pkgs; [
+    blender
+    handbrake
+  ];
   
 }

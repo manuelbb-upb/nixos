@@ -1,22 +1,15 @@
 {pkgs, ...}:
 {
-  home.packages = [
-    pkgs.any-nix-shell
-    pkgs.ripgrep  # for dunst_pause.sh
-  ];
 
-  home.file.".config/zsh-custom-funcs/dunst_pause".source = ./zsh_dunst_pause.sh;
-  home.file.".config/zsh-custom-funcs/vimcd".source = ./zsh_vimcd.sh;
-  # I am sourcing the above files. We could enable them for autoloading by name by putting
-  # `fpath=($HOME/.config/zsh-custom-funcs $fpath);`
-  # in the `initExtra` section.
+#  home.file.".config/zsh-custom-funcs/dunst_pause".source = ./zsh_dunst_pause.sh;
 
   programs.zsh = {
     enable = true;
     initExtra = ''
-      # any-nix-shell zsh --info-right | source /dev/stdin
-      source $HOME/.config/zsh-custom-funcs/dunst_pause
-      source $HOME/.config/zsh-custom-funcs/vimcd
+      # Check if the directory exists and is indeed a directory
+      if [[ -d "$HOME/.config/zsh-custom-funcs" ]]; then
+        fpath+=("$HOME/.config/zsh-custom-funcs")
+      fi
     '';
     plugins = [
       {
@@ -30,6 +23,9 @@
         "git"
         "ssh-agent"
       ];
+      extraConfig = ''
+        zstyle :omz:plugins:ssh-agent agent-forwarding yes
+      '';
     };
   };
   programs.oh-my-posh = {

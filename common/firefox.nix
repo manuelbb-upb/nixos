@@ -31,6 +31,7 @@ in
           ublock-origin
           video-downloadhelper
         ];
+        /*
         bookmarks = [
           {
             name = "Bookmarks Toolbar";
@@ -50,7 +51,7 @@ in
               }
             ];
           }
-        ];
+        ];*/
       };
     };
   };

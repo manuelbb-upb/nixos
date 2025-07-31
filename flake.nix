@@ -49,11 +49,12 @@
       url = "github:danth/stylix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    nix-matlab-ld = {
-      url = "github:manuelbb-upb/nix-matlab-ld";
+    
+    scientific-nix-pkgs = {
+      url = "github:manuelbb-upb/scientific-nix-pkgs";
       inputs.nixpkgs.follows = "nixpkgs";
-    };  
+    };
+
     # hypridle = {
     #   url = "github:hyprwm/hypridle";
     #   inputs.nixpkgs.follows = "nixpkgs";
@@ -68,17 +69,12 @@
     scientific-fhs = {
       url = "github:manuelbb-upb/scientific-fhs/flake_module";
     };
-
-    nix-matlab = {
-      url = "gitlab:doronbehar/nix-matlab";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     */
   };
 
   outputs = inputs@{ 
     self, 
-    nixpkgs, 
+    nixpkgs,
     home-manager, 
     hyprland, 
     hyprland-plugins,
@@ -86,12 +82,10 @@
     nur, 
     hyprsplit,
     stylix,
-    nix-matlab-ld,
+    scientific-nix-pkgs,
     nix-alien,
-    #scientific-fhs,
     # hyprpanel,
     #split-monitor-workspaces, 
-    #nix-matlab,
     ... 
   }: 
   let
