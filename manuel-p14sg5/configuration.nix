@@ -42,12 +42,13 @@
     MATLAB_INSTALL_DIR = "$HOME/bins/MATLAB/R2024b";
   };
 
-  environment.systemPackages = with pkgs; [
+  environment.systemPackages = (with pkgs; [
+    texliveFull
     kdePackages.plasma-thunderbolt
     ### academia
     logseq
     zotero
-    texliveFull
+    #texliveFull
     #podman-tui  # status of containers in the terminal
     #podman-compose
     (inputs.scientific-nix-pkgs.packages.${pkgs.system}.julia-ld.override {
@@ -59,7 +60,7 @@
     cudatoolkit
     cudaPackages.cudnn
     cudaPackages.libcublas
-  ];
+  ]);
   users.users.manuel.extraGroups = ["disk" "vboxusers"];
 
   environment.etc."NetworkManager/system-connections/eduroam.nmconnection" = { 

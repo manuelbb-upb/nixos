@@ -85,7 +85,7 @@
     scientific-nix-pkgs,
     nix-alien,
     # hyprpanel,
-    #split-monitor-workspaces, 
+    #split-monitor-workspaces,
     ... 
   }: 
   let
