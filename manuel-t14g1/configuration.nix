@@ -23,8 +23,8 @@
   ];
 
   environment.systemPackages = with pkgs; [
-    blender
     handbrake
+    makemkv
   ];
   
 }
