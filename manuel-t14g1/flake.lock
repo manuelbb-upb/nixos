@@ -9,7 +9,6 @@
         "nix-alien": "nix-alien",
         "nix-vscode-extensions": "nix-vscode-extensions",
         "nixpkgs": [
-          "t14g1",
           "nixpkgs"
         ],
         "nur": "nur",
@@ -25,32 +24,26 @@
         "path": "../common",
         "type": "path"
       },
-      "parent": [
-        "t14g1"
-      ]
+      "parent": []
     },
     "aquamarine": {
       "inputs": {
         "hyprutils": [
-          "t14g1",
           "allhost",
           "hyprland",
           "hyprutils"
         ],
         "hyprwayland-scanner": [
-          "t14g1",
           "allhost",
           "hyprland",
           "hyprwayland-scanner"
         ],
         "nixpkgs": [
-          "t14g1",
           "allhost",
           "hyprland",
           "nixpkgs"
         ],
         "systems": [
-          "t14g1",
           "allhost",
           "hyprland",
           "systems"
@@ -203,7 +196,6 @@
     "flake-parts": {
       "inputs": {
         "nixpkgs-lib": [
-          "t14g1",
           "allhost",
           "nur",
           "nixpkgs"
@@ -226,7 +218,6 @@
     "flake-parts_2": {
       "inputs": {
         "nixpkgs-lib": [
-          "t14g1",
           "allhost",
           "stylix",
           "nixpkgs"
@@ -319,7 +310,6 @@
     "gitignore": {
       "inputs": {
         "nixpkgs": [
-          "t14g1",
           "allhost",
           "hyprland",
           "pre-commit-hooks",
@@ -360,7 +350,6 @@
     "home-manager": {
       "inputs": {
         "nixpkgs": [
-          "t14g1",
           "allhost",
           "nixpkgs"
         ]
@@ -382,19 +371,16 @@
     "hyprcursor": {
       "inputs": {
         "hyprlang": [
-          "t14g1",
           "allhost",
           "hyprland",
           "hyprlang"
         ],
         "nixpkgs": [
-          "t14g1",
           "allhost",
           "hyprland",
           "nixpkgs"
         ],
         "systems": [
-          "t14g1",
           "allhost",
           "hyprland",
           "systems"
@@ -417,19 +403,16 @@
     "hyprgraphics": {
       "inputs": {
         "hyprutils": [
-          "t14g1",
           "allhost",
           "hyprland",
           "hyprutils"
         ],
         "nixpkgs": [
-          "t14g1",
           "allhost",
           "hyprland",
           "nixpkgs"
         ],
         "systems": [
-          "t14g1",
           "allhost",
           "hyprland",
           "systems"
@@ -481,19 +464,16 @@
     "hyprland-plugins": {
       "inputs": {
         "hyprland": [
-          "t14g1",
           "allhost",
           "hyprland"
         ],
         "nixpkgs": [
-          "t14g1",
           "allhost",
           "hyprland-plugins",
           "hyprland",
           "nixpkgs"
         ],
         "systems": [
-          "t14g1",
           "allhost",
           "hyprland-plugins",
           "hyprland",
@@ -517,13 +497,11 @@
     "hyprland-protocols": {
       "inputs": {
         "nixpkgs": [
-          "t14g1",
           "allhost",
           "hyprland",
           "nixpkgs"
         ],
         "systems": [
-          "t14g1",
           "allhost",
           "hyprland",
           "systems"
@@ -546,21 +524,18 @@
     "hyprland-qt-support": {
       "inputs": {
         "hyprlang": [
-          "t14g1",
           "allhost",
           "hyprland",
           "hyprland-qtutils",
           "hyprlang"
         ],
         "nixpkgs": [
-          "t14g1",
           "allhost",
           "hyprland",
           "hyprland-qtutils",
           "nixpkgs"
         ],
         "systems": [
-          "t14g1",
           "allhost",
           "hyprland",
           "hyprland-qtutils",
@@ -585,13 +560,11 @@
       "inputs": {
         "hyprland-qt-support": "hyprland-qt-support",
         "hyprlang": [
-          "t14g1",
           "allhost",
           "hyprland",
           "hyprlang"
         ],
         "hyprutils": [
-          "t14g1",
           "allhost",
           "hyprland",
           "hyprland-qtutils",
@@ -599,13 +572,11 @@
           "hyprutils"
         ],
         "nixpkgs": [
-          "t14g1",
           "allhost",
           "hyprland",
           "nixpkgs"
         ],
         "systems": [
-          "t14g1",
           "allhost",
           "hyprland",
           "systems"
@@ -628,19 +599,16 @@
     "hyprlang": {
       "inputs": {
         "hyprutils": [
-          "t14g1",
           "allhost",
           "hyprland",
           "hyprutils"
         ],
         "nixpkgs": [
-          "t14g1",
           "allhost",
           "hyprland",
           "nixpkgs"
         ],
         "systems": [
-          "t14g1",
           "allhost",
           "hyprland",
           "systems"
@@ -663,7 +631,6 @@
     "hyprsplit": {
       "inputs": {
         "hyprland": [
-          "t14g1",
           "allhost",
           "hyprland"
         ]
@@ -685,13 +652,11 @@
     "hyprutils": {
       "inputs": {
         "nixpkgs": [
-          "t14g1",
           "allhost",
           "hyprland",
           "nixpkgs"
         ],
         "systems": [
-          "t14g1",
           "allhost",
           "hyprland",
           "systems"
@@ -714,13 +679,11 @@
     "hyprwayland-scanner": {
       "inputs": {
         "nixpkgs": [
-          "t14g1",
           "allhost",
           "hyprland",
           "nixpkgs"
         ],
         "systems": [
-          "t14g1",
           "allhost",
           "hyprland",
           "systems"
@@ -745,7 +708,6 @@
         "flake-compat": "flake-compat_2",
         "nix-index-database": "nix-index-database",
         "nixpkgs": [
-          "t14g1",
           "allhost",
           "nixpkgs"
         ]
@@ -767,7 +729,6 @@
     "nix-index-database": {
       "inputs": {
         "nixpkgs": [
-          "t14g1",
           "allhost",
           "nix-alien",
           "nixpkgs"
@@ -791,7 +752,6 @@
       "inputs": {
         "flake-utils": "flake-utils",
         "nixpkgs": [
-          "t14g1",
           "allhost",
           "nixpkgs"
         ]
@@ -815,7 +775,6 @@
         "flake-compat": "flake-compat_3",
         "flake-utils": "flake-utils_3",
         "nixpkgs": [
-          "t14g1",
           "allhost",
           "scientific-nix-pkgs",
           "vscode-local",
@@ -872,7 +831,6 @@
       "inputs": {
         "flake-parts": "flake-parts",
         "nixpkgs": [
-          "t14g1",
           "allhost",
           "nixpkgs"
         ]
@@ -894,13 +852,11 @@
     "nur_2": {
       "inputs": {
         "flake-parts": [
-          "t14g1",
           "allhost",
           "stylix",
           "flake-parts"
         ],
         "nixpkgs": [
-          "t14g1",
           "allhost",
           "stylix",
           "nixpkgs"
@@ -923,12 +879,10 @@
     "plasma-manager": {
       "inputs": {
         "home-manager": [
-          "t14g1",
           "allhost",
           "home-manager"
         ],
         "nixpkgs": [
-          "t14g1",
           "allhost",
           "nixpkgs"
         ]
@@ -953,7 +907,6 @@
         "flake-compat": "flake-compat",
         "gitignore": "gitignore",
         "nixpkgs": [
-          "t14g1",
           "allhost",
           "hyprland",
           "nixpkgs"
@@ -975,13 +928,13 @@
     },
     "root": {
       "inputs": {
-        "t14g1": "t14g1"
+        "allhost": "allhost",
+        "nixpkgs": "nixpkgs_2"
       }
     },
     "scientific-nix-pkgs": {
       "inputs": {
         "nixpkgs": [
-          "t14g1",
           "allhost",
           "nixpkgs"
         ],
@@ -1011,7 +964,6 @@
         "flake-parts": "flake-parts_2",
         "gnome-shell": "gnome-shell",
         "nixpkgs": [
-          "t14g1",
           "allhost",
           "nixpkgs"
         ],
@@ -1112,21 +1064,6 @@
         "type": "github"
       }
     },
-    "t14g1": {
-      "inputs": {
-        "allhost": "allhost",
-        "nixpkgs": "nixpkgs_2"
-      },
-      "locked": {
-        "path": "manuel-t14g1",
-        "type": "path"
-      },
-      "original": {
-        "path": "manuel-t14g1",
-        "type": "path"
-      },
-      "parent": []
-    },
     "tinted-foot": {
       "flake": false,
       "locked": {
@@ -1213,7 +1150,6 @@
         "flake-utils": "flake-utils_2",
         "nix-vscode-extensions": "nix-vscode-extensions_2",
         "nixpkgs": [
-          "t14g1",
           "allhost",
           "scientific-nix-pkgs",
           "nixpkgs"
@@ -1228,7 +1164,6 @@
         "type": "path"
       },
       "parent": [
-        "t14g1",
         "allhost",
         "scientific-nix-pkgs"
       ]
@@ -1236,37 +1171,31 @@
     "xdph": {
       "inputs": {
         "hyprland-protocols": [
-          "t14g1",
           "allhost",
           "hyprland",
           "hyprland-protocols"
         ],
         "hyprlang": [
-          "t14g1",
           "allhost",
           "hyprland",
           "hyprlang"
         ],
         "hyprutils": [
-          "t14g1",
           "allhost",
           "hyprland",
           "hyprutils"
         ],
         "hyprwayland-scanner": [
-          "t14g1",
           "allhost",
           "hyprland",
           "hyprwayland-scanner"
         ],
         "nixpkgs": [
-          "t14g1",
           "allhost",
           "hyprland",
           "nixpkgs"
         ],
         "systems": [
-          "t14g1",
           "allhost",
           "hyprland",
           "systems"

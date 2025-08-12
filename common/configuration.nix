@@ -71,6 +71,7 @@
   nix.registry.nixpkgs.flake = inputs.nixpkgs;
   nix.channel.enable = false;
   environment.etc."nix/inputs/nixpkgs".source = "${inputs.nixpkgs}";
+  nix.package = pkgs.nixVersions.latest;
   nix.settings = {
     nix-path = lib.mkForce "nixpkgs=/etc/nix/inputs/nixpkgs";
     experimental-features = [ 
