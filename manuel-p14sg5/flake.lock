@@ -1,20 +1,50 @@
 {
   "nodes": {
+    "allhost": {
+      "inputs": {
+        "home-manager": "home-manager",
+        "hyprland": "hyprland",
+        "hyprland-plugins": "hyprland-plugins",
+        "hyprsplit": "hyprsplit",
+        "nix-alien": "nix-alien",
+        "nix-vscode-extensions": "nix-vscode-extensions",
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "nur": "nur",
+        "plasma-manager": "plasma-manager",
+        "scientific-nix-pkgs": "scientific-nix-pkgs",
+        "stylix": "stylix"
+      },
+      "locked": {
+        "path": "./../common",
+        "type": "path"
+      },
+      "original": {
+        "path": "./../common",
+        "type": "path"
+      },
+      "parent": []
+    },
     "aquamarine": {
       "inputs": {
         "hyprutils": [
+          "allhost",
           "hyprland",
           "hyprutils"
         ],
         "hyprwayland-scanner": [
+          "allhost",
           "hyprland",
           "hyprwayland-scanner"
         ],
         "nixpkgs": [
+          "allhost",
           "hyprland",
           "nixpkgs"
         ],
         "systems": [
+          "allhost",
           "hyprland",
           "systems"
         ]
@@ -166,6 +196,7 @@
     "flake-parts": {
       "inputs": {
         "nixpkgs-lib": [
+          "allhost",
           "nur",
           "nixpkgs"
         ]
@@ -187,6 +218,7 @@
     "flake-parts_2": {
       "inputs": {
         "nixpkgs-lib": [
+          "allhost",
           "stylix",
           "nixpkgs"
         ]
@@ -278,6 +310,7 @@
     "gitignore": {
       "inputs": {
         "nixpkgs": [
+          "allhost",
           "hyprland",
           "pre-commit-hooks",
           "nixpkgs"
@@ -317,6 +350,7 @@
     "home-manager": {
       "inputs": {
         "nixpkgs": [
+          "allhost",
           "nixpkgs"
         ]
       },
@@ -337,14 +371,17 @@
     "hyprcursor": {
       "inputs": {
         "hyprlang": [
+          "allhost",
           "hyprland",
           "hyprlang"
         ],
         "nixpkgs": [
+          "allhost",
           "hyprland",
           "nixpkgs"
         ],
         "systems": [
+          "allhost",
           "hyprland",
           "systems"
         ]
@@ -366,14 +403,17 @@
     "hyprgraphics": {
       "inputs": {
         "hyprutils": [
+          "allhost",
           "hyprland",
           "hyprutils"
         ],
         "nixpkgs": [
+          "allhost",
           "hyprland",
           "nixpkgs"
         ],
         "systems": [
+          "allhost",
           "hyprland",
           "systems"
         ]
@@ -424,14 +464,17 @@
     "hyprland-plugins": {
       "inputs": {
         "hyprland": [
+          "allhost",
           "hyprland"
         ],
         "nixpkgs": [
+          "allhost",
           "hyprland-plugins",
           "hyprland",
           "nixpkgs"
         ],
         "systems": [
+          "allhost",
           "hyprland-plugins",
           "hyprland",
           "systems"
@@ -454,10 +497,12 @@
     "hyprland-protocols": {
       "inputs": {
         "nixpkgs": [
+          "allhost",
           "hyprland",
           "nixpkgs"
         ],
         "systems": [
+          "allhost",
           "hyprland",
           "systems"
         ]
@@ -479,16 +524,19 @@
     "hyprland-qt-support": {
       "inputs": {
         "hyprlang": [
+          "allhost",
           "hyprland",
           "hyprland-qtutils",
           "hyprlang"
         ],
         "nixpkgs": [
+          "allhost",
           "hyprland",
           "hyprland-qtutils",
           "nixpkgs"
         ],
         "systems": [
+          "allhost",
           "hyprland",
           "hyprland-qtutils",
           "systems"
@@ -512,20 +560,24 @@
       "inputs": {
         "hyprland-qt-support": "hyprland-qt-support",
         "hyprlang": [
+          "allhost",
           "hyprland",
           "hyprlang"
         ],
         "hyprutils": [
+          "allhost",
           "hyprland",
           "hyprland-qtutils",
           "hyprlang",
           "hyprutils"
         ],
         "nixpkgs": [
+          "allhost",
           "hyprland",
           "nixpkgs"
         ],
         "systems": [
+          "allhost",
           "hyprland",
           "systems"
         ]
@@ -547,14 +599,17 @@
     "hyprlang": {
       "inputs": {
         "hyprutils": [
+          "allhost",
           "hyprland",
           "hyprutils"
         ],
         "nixpkgs": [
+          "allhost",
           "hyprland",
           "nixpkgs"
         ],
         "systems": [
+          "allhost",
           "hyprland",
           "systems"
         ]
@@ -576,6 +631,7 @@
     "hyprsplit": {
       "inputs": {
         "hyprland": [
+          "allhost",
           "hyprland"
         ]
       },
@@ -596,10 +652,12 @@
     "hyprutils": {
       "inputs": {
         "nixpkgs": [
+          "allhost",
           "hyprland",
           "nixpkgs"
         ],
         "systems": [
+          "allhost",
           "hyprland",
           "systems"
         ]
@@ -621,10 +679,12 @@
     "hyprwayland-scanner": {
       "inputs": {
         "nixpkgs": [
+          "allhost",
           "hyprland",
           "nixpkgs"
         ],
         "systems": [
+          "allhost",
           "hyprland",
           "systems"
         ]
@@ -648,6 +708,7 @@
         "flake-compat": "flake-compat_2",
         "nix-index-database": "nix-index-database",
         "nixpkgs": [
+          "allhost",
           "nixpkgs"
         ]
       },
@@ -668,6 +729,7 @@
     "nix-index-database": {
       "inputs": {
         "nixpkgs": [
+          "allhost",
           "nix-alien",
           "nixpkgs"
         ]
@@ -690,6 +752,7 @@
       "inputs": {
         "flake-utils": "flake-utils",
         "nixpkgs": [
+          "allhost",
           "nixpkgs"
         ]
       },
@@ -712,6 +775,7 @@
         "flake-compat": "flake-compat_3",
         "flake-utils": "flake-utils_3",
         "nixpkgs": [
+          "allhost",
           "scientific-nix-pkgs",
           "vscode-local",
           "nixpkgs"
@@ -749,11 +813,11 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1754769237,
-        "narHash": "sha256-TWJ99xfhK/Pwq7+hye01OWdCSeFfssKKb30VS5KyIzk=",
+        "lastModified": 1754725699,
+        "narHash": "sha256-iAcj9T/Y+3DBy2J0N+yF9XQQQ8IEb5swLFzs23CdP88=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "5efd679ae51e3f7116480fff457e68486dabf1f6",
+        "rev": "85dbfc7aaf52ecb755f87e577ddbe6dbbdbc1054",
         "type": "github"
       },
       "original": {
@@ -767,15 +831,16 @@
       "inputs": {
         "flake-parts": "flake-parts",
         "nixpkgs": [
+          "allhost",
           "nixpkgs"
         ]
       },
       "locked": {
-        "lastModified": 1754996709,
-        "narHash": "sha256-IOFqbuRuumZFG9s/c8pablo4AL4jzXdjr86OvMxINkE=",
+        "lastModified": 1755002845,
+        "narHash": "sha256-RpVzaY2UxFcjEbMrX8ULcNJZ4U7d+yozidGTnr7ptpE=",
         "owner": "nix-community",
         "repo": "NUR",
-        "rev": "ccb6cee3ff1f3b002d95144230d3908bcdf1b4d8",
+        "rev": "7e5bf47a4a5ed066ae47e6f421eb8b0d5c48ec8a",
         "type": "github"
       },
       "original": {
@@ -787,10 +852,12 @@
     "nur_2": {
       "inputs": {
         "flake-parts": [
+          "allhost",
           "stylix",
           "flake-parts"
         ],
         "nixpkgs": [
+          "allhost",
           "stylix",
           "nixpkgs"
         ]
@@ -812,9 +879,11 @@
     "plasma-manager": {
       "inputs": {
         "home-manager": [
+          "allhost",
           "home-manager"
         ],
         "nixpkgs": [
+          "allhost",
           "nixpkgs"
         ]
       },
@@ -838,6 +907,7 @@
         "flake-compat": "flake-compat",
         "gitignore": "gitignore",
         "nixpkgs": [
+          "allhost",
           "hyprland",
           "nixpkgs"
         ]
@@ -858,22 +928,14 @@
     },
     "root": {
       "inputs": {
-        "home-manager": "home-manager",
-        "hyprland": "hyprland",
-        "hyprland-plugins": "hyprland-plugins",
-        "hyprsplit": "hyprsplit",
-        "nix-alien": "nix-alien",
-        "nix-vscode-extensions": "nix-vscode-extensions",
-        "nixpkgs": "nixpkgs_2",
-        "nur": "nur",
-        "plasma-manager": "plasma-manager",
-        "scientific-nix-pkgs": "scientific-nix-pkgs",
-        "stylix": "stylix"
+        "allhost": "allhost",
+        "nixpkgs": "nixpkgs_2"
       }
     },
     "scientific-nix-pkgs": {
       "inputs": {
         "nixpkgs": [
+          "allhost",
           "nixpkgs"
         ],
         "vscode-local": "vscode-local"
@@ -902,6 +964,7 @@
         "flake-parts": "flake-parts_2",
         "gnome-shell": "gnome-shell",
         "nixpkgs": [
+          "allhost",
           "nixpkgs"
         ],
         "nur": "nur_2",
@@ -1087,6 +1150,7 @@
         "flake-utils": "flake-utils_2",
         "nix-vscode-extensions": "nix-vscode-extensions_2",
         "nixpkgs": [
+          "allhost",
           "scientific-nix-pkgs",
           "nixpkgs"
         ]
@@ -1100,32 +1164,39 @@
         "type": "path"
       },
       "parent": [
+        "allhost",
         "scientific-nix-pkgs"
       ]
     },
     "xdph": {
       "inputs": {
         "hyprland-protocols": [
+          "allhost",
           "hyprland",
           "hyprland-protocols"
         ],
         "hyprlang": [
+          "allhost",
           "hyprland",
           "hyprlang"
         ],
         "hyprutils": [
+          "allhost",
           "hyprland",
           "hyprutils"
         ],
         "hyprwayland-scanner": [
+          "allhost",
           "hyprland",
           "hyprwayland-scanner"
         ],
         "nixpkgs": [
+          "allhost",
           "hyprland",
           "nixpkgs"
         ],
         "systems": [
+          "allhost",
           "hyprland",
           "systems"
         ]
