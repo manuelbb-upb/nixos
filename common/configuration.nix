@@ -225,7 +225,7 @@
     enable = true;
     powerOnBoot = true;
   };
-  #services.blueman.enable = true;
+  services.blueman.enable = true;
 
   # Enable sound with pipewire.
   services.pulseaudio.enable = false;

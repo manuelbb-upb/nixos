@@ -19,6 +19,12 @@
     ./hardware-extra.nix
     # Include common config
     ../common/configuration.nix
-    ./samba.nix
+    #./samba.nix
   ];
+
+  environment.systemPackages = with pkgs; [
+    handbrake
+    makemkv
+  ];
+  
 }
