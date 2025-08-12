@@ -43,7 +43,7 @@
   };
 
   environment.systemPackages = (with pkgs; [
-    texliveFull
+    (texliveFull.withPackages( ps: with ps; [ tex-gyre tex-gyre-math ] ))
     kdePackages.plasma-thunderbolt
     ### academia
     logseq
