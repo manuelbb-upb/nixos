@@ -44,6 +44,8 @@
 
   environment.systemPackages = (with pkgs; [
     (texliveFull.withPackages( ps: with ps; [ tex-gyre tex-gyre-math stix2-otf ] ))
+    pdf2svg
+    poppler_utils
     kdePackages.plasma-thunderbolt
     ### academia
     logseq
