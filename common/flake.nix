@@ -108,6 +108,12 @@
         src = displaylink_src;
       });
     });
+
+    custom-julia = (inputs.scientific-nix-pkgs.packages.${system}.julia-ld.override {
+      version = "1.11.3";
+      enable-matlab = true;
+      add-opengl-libs = true;
+    });
   in
   {
     # for multi-machine/multi-host tips see
@@ -134,7 +140,7 @@
         ./../${hostname}/configuration.nix
         {
           # make `inputs` available in for module in `configuration.nix`
-          _module.args = { inherit inputs hostname; };
+          _module.args = { inherit inputs hostname custom-julia; };
         }
         # generate home-manager configuration for `hostname`
         home-manager.nixosModules.home-manager {
@@ -150,7 +156,7 @@
           # Optionally, use home-manager.extraSpecialArgs to pass
           # arguments to home.nix
           home-manager.extraSpecialArgs = {
-            inherit inputs;
+            inherit inputs custom-julia;
           };
         }
       ];

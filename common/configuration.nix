@@ -341,7 +341,6 @@
     imagemagick       ## for previews in kitty / nice-to-have anyways
     ## programming
     python3     # just nice to have a global python available from time to time
-    ### custom julia
     gcc         # A C compiler does not hurt and is required 
                 # by many other tools (e.g., Julia's PackageCompiler)
     gnumake     # `make` also nice to have

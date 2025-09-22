@@ -9,6 +9,7 @@
   ## extra args
   , inputs
   , hostname
+  , custom-julia
   , ... 
 }:
 {
@@ -53,10 +54,7 @@
     #texliveFull
     #podman-tui  # status of containers in the terminal
     #podman-compose
-    (inputs.scientific-nix-pkgs.packages.${pkgs.system}.julia-ld.override {
-      version = "1.11.3";
-      enable-matlab = true;
-    })
+    custom-julia 
     inputs.scientific-nix-pkgs.packages.${pkgs.system}.matlab
     inputs.scientific-nix-pkgs.packages.${pkgs.system}.matlab.shell-script
     cudatoolkit

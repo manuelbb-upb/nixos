@@ -1,4 +1,4 @@
-{ pkgs, inputs, config, ... } :
+{ pkgs, inputs, config, custom-julia, ... } :
 let
   ## vscode keybindings (common to all profiles)
   keybindings = [
@@ -202,13 +202,28 @@ let
     #"dev.containers.dockerComposePath" = "podman-compose";
   };
 
+  # https://fredrikekre.se/posts/direnv-with-julia/
+  direnv-julia-script = pkgs.writeShellScript "direnv-julia-script" ''
+    # Prepend PATH with a fallback julia
+    JULIA_PATH="${custom-julia}"
+    export PATH="''${JULIA_PATH}:''${PATH}"
+
+    if [ -z "''${JULIA_LANGUAGESERVER}" ]; then
+        # REPL process; use direnv exec to load .envrc file
+        exec direnv exec "''${PWD}" julia "''${@}"
+    else
+        # Language Server process; exec the fallback julia
+        exec julia "''${@}"
+    fi
+  '';
+
   userSettings-julia = {
     julia = {
       cellDelimiters = [
         "^#(\\s?)%%"
         "^#-"
       ];
-      #"executablePath" = "julia";
+      "executablePath" = "${direnv-julia-script.out}";
       "symbolCacheDownload" = true;
       "enableTelemetry" = false;
       "useRevise" = true;
