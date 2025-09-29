@@ -2,20 +2,19 @@
   description = "NixOS configuration";
 
   inputs = {
-    allhost = {
-      url = "../common";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+
+    scientific-nix-pkgs = {
+      url = "github:manuelbb-upb/scientific-nix-pkgs";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
- };
-
-  outputs = inputs@{ 
-    self, 
-    nixpkgs,
-    allhost
-  }:
-  { 
-    nixosConfig-manuel-t14g1 = allhost.make-nixosConfiguration "manuel-t14g1";
+    allhosts = {
+      url = "path:./..";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.scientific-nix-pkgs.follows = "scientific-nix-pkgs";
+    };
   };
+
+  outputs = inputs@{self, allhosts, ...}:allhosts;
 }
