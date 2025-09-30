@@ -942,11 +942,11 @@
         "vscode-local": "vscode-local"
       },
       "locked": {
-        "lastModified": 1754999741,
-        "narHash": "sha256-OrBpMC+Z4P/YcMvpgewlPFFE/PYWUcAIlrJ77QykwyE=",
+        "lastModified": 1759218988,
+        "narHash": "sha256-D05EA6Mmobrc5TgYoC5m9vo5GdZmdUVOW9VHQnSEhog=",
         "owner": "manuelbb-upb",
         "repo": "scientific-nix-pkgs",
-        "rev": "acbc988f5205d7f206941ffb1970d19fab2e3110",
+        "rev": "7d90a6d04b92c18eefa6f3e2ff056cf7149ca916",
         "type": "github"
       },
       "original": {
@@ -1156,11 +1156,11 @@
         ]
       },
       "locked": {
-        "path": "./pkgs/vscode",
+        "path": "pkgs/vscode",
         "type": "path"
       },
       "original": {
-        "path": "./pkgs/vscode",
+        "path": "pkgs/vscode",
         "type": "path"
       },
       "parent": [

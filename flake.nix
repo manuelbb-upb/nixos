@@ -110,9 +110,9 @@
     });
 
     custom-julia = (inputs.scientific-nix-pkgs.packages.${system}.julia-ld.override {
-      version = "1.11.3";
-      enable-matlab = true;
-      add-opengl-libs = true;
+      version = "1.11.4";
+      enable-matlab = false;
+      add-opengl-libs = false;
     });
 
     make-nixosConfiguration = (hostname: nixpkgs.lib.nixosSystem {
