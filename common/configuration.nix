@@ -332,7 +332,7 @@
     ### backup tools
     chezmoi
     duplicacy       # backup tool for data
-    bitwarden       # password manager
+    bitwarden-desktop       # password manager
     bitwarden-cli   # password manager command line tool
     ## shell + terminal
     zsh
@@ -346,7 +346,7 @@
     gcc         # A C compiler does not hurt and is required 
                 # by many other tools (e.g., Julia's PackageCompiler)
     gnumake     # `make` also nice to have
-    ((vim_configurable.override {}).customize {
+    ((vim-full.override {}).customize {
       name = "vim";
       vimrcConfig.packages.myplugins = with pkgs.vimPlugins; {
         start = [

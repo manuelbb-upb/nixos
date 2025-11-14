@@ -24,10 +24,10 @@
     "modesetting"
   ];
 
-  # Enable Vulkan driver:
+  /*# Enable Vulkan driver:
   hardware.graphics.extraPackages = with pkgs; [
     amdvlk
-  ];
+    ];*/
 
   boot.loader.grub.enableCryptodisk=false;
   /*
