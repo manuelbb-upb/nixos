@@ -290,6 +290,7 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
+    ausweisapp
     ## basic tools
     htop
     wget
@@ -298,6 +299,7 @@
     ripgrep
     killall
     coreutils
+    zip
     unzip
     unrar
     wl-clipboard
@@ -396,6 +398,7 @@
     allowedTCPPortRanges = [
       { from = 1714; to = 1764; }
     ];
+    allowedUDPPorts = [ 24727 ]; # Ausweisapp
     allowedUDPPortRanges = [
       { from = 1714; to = 1764; }
     ];
