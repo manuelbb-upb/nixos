@@ -3,6 +3,7 @@
 {
   imports = [
     ../common/home.nix
+    ../common/openaudible.nix
     ./email.nix
   ];
 
