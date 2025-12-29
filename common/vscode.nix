@@ -249,7 +249,7 @@ let
   };
 
   userSettings-latex = {
-    "ltex.ltex-ls.path" = "${pkgs.ltex-ls.out}";
+    "ltex.ltex-ls.path" = "${pkgs.ltex-ls-plus.out}";
   };
 
   # extension sets shortcuts
@@ -283,7 +283,7 @@ let
 
   exts-latex = with extset-marketplace; [ 
     james-yu.latex-workshop
-    valentjn.vscode-ltex
+    ltex-plus.vscode-ltex-plus
   ];
 
   exts-python = with extset-nixpkgs; [
@@ -303,7 +303,7 @@ let
 in
 {
   home.packages = [
-    pkgs.ltex-ls    # LaTeX language server
+    pkgs.ltex-ls-plus    # LaTeX language server
   ];
 
   programs.vscode = {

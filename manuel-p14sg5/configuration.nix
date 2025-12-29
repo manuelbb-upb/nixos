@@ -12,6 +12,23 @@
   , custom-julia
   , ... 
 }:
+let
+  tlpkgs = pkgs.texlive.pkgs;
+  erewhon-math = tlpkgs.erewhon-math.overrideAttrs (prevAttrs : {
+    version = "0.72";
+    revision = "r76878";
+    outputDrvs = prevAttrs.outputDrvs // {
+      tex = prevAttrs.outputDrvs.tex.overrideAttrs {
+        name = "erewhon-math-0.72-tex";
+        src = pkgs.fetchurl {
+          url = "https://ftp.rrze.uni-erlangen.de/ctan/systems/texlive/tlnet/archive/erewhon-math.r76878.tar.xz";
+          hash = "sha256-To56Y2Q66H8z9OTkq8HrWPgHRXfrybRC7aepIZjc2Ig=";
+        };
+        outputHash = "sha256-us8/Lx9LbcSFbj1Oe/bSKQuYCIxfuyKSOZuxwBef/+E=";
+      };
+    };
+  });
+in
 {
   imports =  [ 
     # Include the results of the hardware scan.
@@ -44,7 +61,7 @@
   };
 
   environment.systemPackages = (with pkgs; [
-    (texliveFull.withPackages( ps: with ps; [ erewhon erewhon-math cabin tex-gyre tex-gyre-math stix2-otf ] ))
+    (texliveFull.withPackages( ps: (with ps; [ erewhon cabin tex-gyre tex-gyre-math stix2-otf ] ) ++ [ erewhon-math] ))
     pdf2svg
     poppler-utils
     diffpdf
