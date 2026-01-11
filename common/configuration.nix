@@ -325,7 +325,7 @@
     ### office
     gimp
     libreoffice-qt
-    (hunspellWithDicts ( with hunspellDicts; [ # spellchecking for libreoffice
+    (hunspell.withDicts ( with hunspellDicts; [ # spellchecking for libreoffice
       en_US
       de_DE
     ]))
