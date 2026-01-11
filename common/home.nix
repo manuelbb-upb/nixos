@@ -96,7 +96,7 @@
   # Enable and configure git
   programs.git = {
     enable = true;
-    user = {
+    settings.user = {
       name = "manuelbb-upb";
       email = "mmanberk@protonmail.com";
     };
