@@ -141,7 +141,7 @@
           home-manager.useUserPackages = true;
           home-manager.backupFileExtension = builtins.toString(builtins.currentTime) + ".hmbackup"; # this is impure
           home-manager.sharedModules = [
-            plasma-manager.homeManagerModules.plasma-manager
+            plasma-manager.homeModules.plasma-manager
           ];
 
           home-manager.users.manuel = import ./${hostname}/home.nix;
