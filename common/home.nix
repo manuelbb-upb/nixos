@@ -97,7 +97,7 @@
   programs.git = {
     enable = true;
     userName = "manuelbb-upb";
-    userEmail = "manuelbb@mail.uni-paderborn.de";
+    userEmail = "mmanberk@protonmail.com";
   };
   # locate packages for missing executables
   programs.nix-index = {

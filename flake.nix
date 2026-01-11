@@ -161,6 +161,7 @@
     nixosConfigurations = (pkgs.lib.genAttrs [
       "manuel-p14sg5"
       "manuel-t14g1"
+      "manuel-hp845g8"
     ] make-nixosConfiguration);
   };
 }
