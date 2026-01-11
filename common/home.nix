@@ -96,8 +96,10 @@
   # Enable and configure git
   programs.git = {
     enable = true;
-    userName = "manuelbb-upb";
-    userEmail = "mmanberk@protonmail.com";
+    user = {
+      name = "manuelbb-upb";
+      email = "mmanberk@protonmail.com";
+    };
   };
   # locate packages for missing executables
   programs.nix-index = {
