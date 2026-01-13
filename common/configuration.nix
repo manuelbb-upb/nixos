@@ -314,7 +314,7 @@
     inxi        # system information
     fastfetch   # print system information in terminal
     kdePackages.filelight   # KDE tool for storage analysis
-    inputs.nix-alien.packages.${system}.nix-alien   # companion to nix-ld
+    inputs.nix-alien.packages.${stdenv.hostPlatform.system}.nix-alien   # companion to nix-ld
       # `nix-alien-ld myapp` spawn inside shell with `NIX_LD_LIBRARY_PATH` populated
       # `nix-alien-find-libs myapp` list needed deps
     ### browser

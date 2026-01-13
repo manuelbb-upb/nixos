@@ -254,7 +254,7 @@ let
 
   # extension sets shortcuts
   extset-nixpkgs = pkgs.vscode-extensions;
-  extset-marketplace = inputs.nix-vscode-extensions.extensions.${pkgs.system}.vscode-marketplace;
+  extset-marketplace = inputs.nix-vscode-extensions.extensions.${pkgs.stdenv.hostPlatform.system}.vscode-marketplace;
   extset-manual = pkgs.vscode-utils.extensionsFromVscodeMarketplace;
 
   exts-common = with extset-marketplace; [
