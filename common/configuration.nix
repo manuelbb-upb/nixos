@@ -128,6 +128,7 @@
     lmodern
     corefonts
     gyre-fonts
+    inriafonts
   ]) ++ 
   builtins.filter lib.attrsets.isDerivation (builtins.attrValues pkgs.nerd-fonts) ++ [
     (pkgs.callPackage ./segoe_ui.nix {})  # additional Microsoft font
