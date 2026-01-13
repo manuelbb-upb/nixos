@@ -64,6 +64,7 @@ in
     (texliveFull.withPackages( ps: (with ps; [ erewhon cabin tex-gyre tex-gyre-math stix2-otf ] ) ++ [ erewhon-math] ))
     pdf2svg
     poppler-utils
+    ocrmypdf
     diffpdf
     kdePackages.plasma-thunderbolt
     ### academia
