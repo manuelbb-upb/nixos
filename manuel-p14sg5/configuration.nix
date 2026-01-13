@@ -73,8 +73,8 @@ in
     #podman-tui  # status of containers in the terminal
     #podman-compose
     custom-julia 
-    inputs.scientific-nix-pkgs.packages.${pkgs.system}.matlab
-    inputs.scientific-nix-pkgs.packages.${pkgs.system}.matlab.shell-script
+    inputs.scientific-nix-pkgs.packages.${pkgs.stdenv.hostPlatform.system}.matlab
+    inputs.scientific-nix-pkgs.packages.${pkgs.stdenv.hostPlatform.system}.matlab.shell-script
     cudatoolkit
     cudaPackages.cudnn
     cudaPackages.libcublas
