@@ -16,8 +16,7 @@ in
   boot.extraModulePackages = [ config.boot.kernelPackages.nvidia_x11 ];
 
   boot.kernelParams = [ 
-    "acpi_backlight=vendor" # This makes the the brightness keys work!!
-    #"nvidia.NVreg_RegistryDwords=EnableBrightnessControl=1" # About this, I am not sure... could bisect
+    "acpi_backlight=nvidia_wmi_ec" # This makes the the brightness keys work!!
     "i915.force_probe=7d55"
     "i915.enable_psr=0"
     "btusb.enable_autosuspend=n"
