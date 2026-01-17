@@ -20,8 +20,8 @@
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
   boot.extraModulePackages = with config.boot.kernelPackages; [
-    #evdi
-  ]; # I think this was needed for displaylink?
+    #evdi # I think this was needed for displaylink?
+  ]; 
 
   boot.supportedFilesystems = [ "ntfs" ];
 
