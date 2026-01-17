@@ -20,7 +20,7 @@
   # Load AMD drivers for graphical sessions:
   services.xserver.videoDrivers = [
     "amdgpu"
-    "displaylink"
+#    "displaylink"
     "modesetting"
   ];
 

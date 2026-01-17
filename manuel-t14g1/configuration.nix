@@ -25,7 +25,15 @@
   environment.systemPackages = with pkgs; [
     handbrake
     makemkv
+    vlc
     protonup-qt
+    freecad-wayland
+    blender
+    orca-slicer
+    meshlab
+    gimp
+    podman-tui
+    podman-compose
   ];
 
   programs.steam = {
