@@ -129,6 +129,7 @@
     corefonts
     gyre-fonts
     inriafonts
+    ibm-plex
   ]) ++ 
   builtins.filter lib.attrsets.isDerivation (builtins.attrValues pkgs.nerd-fonts) ++ [
     (pkgs.callPackage ./segoe_ui.nix {})  # additional Microsoft font
