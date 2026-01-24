@@ -130,6 +130,7 @@
     gyre-fonts
     inriafonts
     ibm-plex
+    noto-fonts-monochrome-emoji
   ]) ++ 
   builtins.filter lib.attrsets.isDerivation (builtins.attrValues pkgs.nerd-fonts) ++ [
     (pkgs.callPackage ./segoe_ui.nix {})  # additional Microsoft font
