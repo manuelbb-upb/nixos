@@ -67,6 +67,9 @@ in
       enableExtensionPack = true;
       enableKvm = true;
       addNetworkInterface = false;
+      package = (pkgs.virtualbox.overrideAttrs (prev: {
+        buildInputs = prev.buildInputs ++ [ pkgs.qt6.qtwayland ];
+      }));
     };
   };
 
