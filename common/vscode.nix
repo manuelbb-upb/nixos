@@ -280,8 +280,8 @@ let
         {
       name = "language-julia";
       publisher = "julialang";
-      version = "1.127.1";
-      hash = "sha256-GDbxC8B6Cu+yBoa0qPURMf1M3imtSSm100ZI0CA78aI=";
+      version = "1.197.1";
+      hash = "sha256-iki5IwiOE2BBXcbMeq+qBxvjdak1vrOklbOkvU2ZAXA=";
     }
   ];
 
