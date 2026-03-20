@@ -134,6 +134,8 @@ let
   userSettings = {
     # don't notify about updates (?)
     "update.mode" = "none";
+    ## for gemini
+    #"http.systemCertificatesNode" = true;
     # set theme
     "workbench.colorTheme" = "Catppuccin Mocha";
     # show a column ruler:
@@ -270,6 +272,8 @@ let
     jnoortheen.nix-ide
     # direnv chooser:
     mkhl.direnv
+    ## gemini assistent
+    #google.geminicodeassist
   ];
 
   exts-julia = extset-manual [

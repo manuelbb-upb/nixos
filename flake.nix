@@ -107,7 +107,7 @@
     });
 
     custom-julia = (inputs.scientific-nix-pkgs.packages.${system}.julia-ld.override {
-      version = "1.11.4";
+      version = "1.12.5";
       enable-matlab = false;
       add-opengl-libs = true;
     });

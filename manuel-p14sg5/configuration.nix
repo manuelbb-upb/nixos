@@ -43,6 +43,11 @@ let
     };
   });
 
+  patchelfWayland = binPath: ''
+    patchelf ${binPath} \
+      --add-needed libwayland-client.so.0 \
+      --add-rpath ${pkgs.lib.makeLibraryPath [ pkgs.kdePackages.wayland ]}
+  '';
 in
 {
   imports =  [ 
@@ -69,6 +74,9 @@ in
       addNetworkInterface = false;
       package = (pkgs.virtualbox.overrideAttrs (prev: {
         buildInputs = prev.buildInputs ++ [ pkgs.qt6.qtwayland ];
+        preFixup = ''
+          ${patchelfWayland "$out/bin/VirtualBox"}
+        '' + prev.preFixup;
       }));
     };
   };
