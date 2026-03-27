@@ -134,6 +134,8 @@ let
   userSettings = {
     # don't notify about updates (?)
     "update.mode" = "none";
+    ## for gemini
+    #"http.systemCertificatesNode" = true;
     # set theme
     "workbench.colorTheme" = "Catppuccin Mocha";
     # show a column ruler:
@@ -270,14 +272,16 @@ let
     jnoortheen.nix-ide
     # direnv chooser:
     mkhl.direnv
+    ## gemini assistent
+    #google.geminicodeassist
   ];
 
   exts-julia = extset-manual [
         {
       name = "language-julia";
       publisher = "julialang";
-      version = "1.127.1";
-      hash = "sha256-GDbxC8B6Cu+yBoa0qPURMf1M3imtSSm100ZI0CA78aI=";
+      version = "1.197.1";
+      hash = "sha256-iki5IwiOE2BBXcbMeq+qBxvjdak1vrOklbOkvU2ZAXA=";
     }
   ];
 

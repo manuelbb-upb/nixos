@@ -5,7 +5,7 @@ let
 in
 {
   home.packages = [
-    pkgs.vdhcoapp
+    #pkgs.vdhcoapp
   ];
   stylix.targets.firefox = {
     enable = true;

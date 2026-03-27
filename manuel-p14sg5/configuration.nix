@@ -28,6 +28,26 @@ let
       };
     };
   });
+  
+  latexdiff = tlpkgs.latexdiff.overrideAttrs (prevAttrs: {
+    outputDrvs = prevAttrs.outputDrvs // {
+      out = prevAttrs.outputDrvs.out.overrideAttrs (prevOut: {
+        nativeBuildInputs = (prevOut.nativeBuildInputs or []) ++ [ pkgs.makeWrapper ];
+        buildInputs = (prevOut.buildInputs or []) ++ (with pkgs.perlPackages; [
+          EncodeLocale
+        ]);
+        buildCommand = (prevOut.buildCommand or "") + ''
+          wrapProgram $out/bin/latexdiff --prefix PERL5LIB : "$PERL5LIB"
+        '';
+      });
+    };
+  });
+
+  patchelfWayland = binPath: ''
+    patchelf ${binPath} \
+      --add-needed libwayland-client.so.0 \
+      --add-rpath ${pkgs.lib.makeLibraryPath [ pkgs.kdePackages.wayland ]}
+  '';
 in
 {
   imports =  [ 
@@ -52,6 +72,12 @@ in
       enableExtensionPack = true;
       enableKvm = true;
       addNetworkInterface = false;
+      package = (pkgs.virtualbox.overrideAttrs (prev: {
+        buildInputs = prev.buildInputs ++ [ pkgs.qt6.qtwayland ];
+        preFixup = ''
+          ${patchelfWayland "$out/bin/VirtualBox"}
+        '' + prev.preFixup;
+      }));
     };
   };
 
@@ -61,7 +87,13 @@ in
   };
 
   environment.systemPackages = (with pkgs; [
-    (texliveFull.withPackages( ps: (with ps; [ erewhon cabin tex-gyre tex-gyre-math stix2-otf ] ) ++ [ erewhon-math] ))
+    (texliveFull.withPackages( ps: (with ps; [ 
+        erewhon cabin tex-gyre tex-gyre-math stix2-otf 
+      ]) ++ [ 
+        erewhon-math
+        latexdiff
+      ]
+    ))
     pdf2svg
     poppler-utils
     ocrmypdf

@@ -129,6 +129,8 @@
     corefonts
     gyre-fonts
     inriafonts
+    ibm-plex
+    noto-fonts-monochrome-emoji
   ]) ++ 
   builtins.filter lib.attrsets.isDerivation (builtins.attrValues pkgs.nerd-fonts) ++ [
     (pkgs.callPackage ./segoe_ui.nix {})  # additional Microsoft font
@@ -210,10 +212,22 @@
   };
 
   # Enable CUPS to print documents.
-  services.printing.enable = true;
+  services.printing = {
+    enable = true;
+    drivers = with pkgs; [
+      epson-escpr2
+    ];
+  };
+  hardware.sane = {
+    enable = true;
+    openFirewall = true;
+    extraBackends = [ pkgs.sane-airscan ];
+  };
+  services.udev.packages = [ pkgs.sane-airscan ];
+
   services.avahi = {
     enable = true;
-    nssmdns4 = true;
+    nssmdns = true;
     openFirewall = true;
   };
 
@@ -259,7 +273,11 @@
   users.users.manuel = {
     isNormalUser = true;
     description = "Manuel";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ 
+      "networkmanager" 
+      "wheel" 
+      "scanner" "lp"
+    ];
     packages = with pkgs; [
     ];
     shell = pkgs.zsh;

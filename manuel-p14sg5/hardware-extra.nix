@@ -20,6 +20,7 @@ in
     "i915.force_probe=7d55"
     "i915.enable_psr=0"
     "btusb.enable_autosuspend=n"
+    # "nvidia.NVreg_EnableGpuFirmware=0"  # openCL https://github.com/NixOS/nixpkgs/issues/325378
   ];
   # Make Trackpoint slower, see https://wiki.archlinux.org/title/TrackPoint
   # To get device information, obtain `libinput` (`nix-shell -p libinput`), and find trackpoint with
@@ -72,7 +73,7 @@ in
 
     # Enable the Nvidia settings menu,
     # accessible via `nvidia-settings`.
-    nvidiaSettings = false;
+    nvidiaSettings = true;
 
     # Optionally, you may need to select the appropriate driver version for your specific GPU.
     package = nvidia-pkg;
